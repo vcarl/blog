@@ -1,0 +1,16 @@
+# Site settings
+title: Carl Vitullo
+email: carl.vitullo@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  I'm a frontend developer with experience designing databases,
+  administering servers, writing APIs, and doing just about everything else.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://vcarl.com" # the base hostname & protocol for your site
+twitter_username: cvitullo
+github_username:  vcarl
+
+collections: 
+  - resume
+
+# Build settings
+markdown: kramdown

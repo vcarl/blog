@@ -1,0 +1,26 @@
+%vertical-rhythm {
+		margin-bottom: 30px / 2;
+}
+
+.site-footer {
+		background-color: #333;
+		color: #ccc;
+}
+
+.contact-list {
+		color: #ccc;
+}
+
+.icon {
+
+		> svg {
+				display: inline-block;
+				width: 16px;
+				height: 16px;
+				vertical-align: middle;
+
+				path {
+						fill: $grey-color;
+				}
+		}
+}

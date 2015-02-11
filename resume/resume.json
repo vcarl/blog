@@ -1,0 +1,49 @@
+{"resume": {
+  "qualification": [
+    "Several years of experience in C++, Java, PHP, CakePHP, Javascript, jQuery, CoffeeScript, React.js, Backbone.js, CSS3, and HTML5. Some experience with Jekyll, Go, and Bash scripts, and exposure to Python, Ruby, and Node.js.",
+    "Some experience writing deployment scripts in Amazon OpsWorks and Capistrano.",
+    "Experience using Amazon Web Services to host web applications.",
+    "Foundation.",
+    "Experienced in designing and configuring MySQL databases. ",
+    "Proficient in Windows, Mac OS X, and Unix environments.",
+    "Strong technical writing abilities and a good handle on the rules and conventions of writing."
+  ],
+  "accomplishments": [
+    "Coordinated A2B Bikeshare's initial product launch in Lansing, MI. Managed 4 engineering students to create a minimum viable product in 3 months.",
+    "Second place at NMU's 12th Annual Programming Contest."
+  ],
+  "education": [
+    {
+      "school": "Washtenaw Community College",
+      "year": "2010 ",
+      "city": "Ann Arbor",
+      "state": "Michigan",
+      "degree": "Associates' degree in Programming in C++",
+      "gpa": "3.4"
+    }
+  ],
+  "work": [
+    {
+      "company": "Hatteras",
+      "start": "October 2014",
+      "title": "Frontend Software Engineer",
+      "description": "I design and implement frontend components of products. I implemented a redesign of Hatteras' FocusOne iView service to bring the product into the modern web era using React.js and modern build systems."
+    },
+    {
+      "company": "A2B Bikeshare",
+      "start": "September 2012",
+      "end": "August 2014",
+      "title": "CTO, Software Lead",
+      "description": "I managed the software team, oversaw development of the on-bike Android application, sales site, back end platform, and the user facing and system administration websites. Initial development was in CakePHP 2.5, but my planned conversion to Go was underway at the time of my departure."
+    },
+    {
+      "company": "Barracuda Networks",
+      "start": "October 2012",
+      "end": "May 2013",
+      "title": "Tier I Support",
+      "description": "I answered phones and emails to assist customers with problems with Barracuda's backup product. I remotely administered the hardware, diagnosing failed hard drives, rebuilding RAIDs, and guiding customers through initial setup. Identified bugs and described steps to reproduce for engineering.",
+    }
+  ]
+}}
+
+
