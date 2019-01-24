@@ -57,13 +57,9 @@ export const mapTagToComponent = (tagName, props) => {
     case 'root':
       return { tagName: 'article', props };
     case 'a': {
-      const { href: to, ...rest } = props;
       return {
         tagName: TextLink,
-        props: {
-          to,
-          ...rest,
-        },
+        props,
       };
     }
     case 'p':
