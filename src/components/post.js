@@ -8,7 +8,7 @@ import Layout from './layout';
 const Post = ({ data }) => {
   const { htmlAst, frontmatter } = data.markdownRemark;
   return (
-    <Layout>
+    <Layout title={frontmatter.title}>
       <SEO
         title={frontmatter.title}
         keywords={(frontmatter.tags || '').split(',').map(s => s.trim())}
