@@ -2,13 +2,17 @@ import styled from 'styled-components';
 
 export const Article = styled.article``;
 export const Text = styled.span``;
+export const Block = styled.div``;
 export const Paragraph = styled.p``;
 export const TextLink = styled.a``;
 export const Image = styled.img``;
-
+export const List = styled.ul``;
+export const OrderedList = styled.ol``;
+export const ListItem = styled.li``;
 export const Break = styled.hr``;
 
 export const Title = styled.h1``;
+export const Subtitle = styled.div``;
 export const Heading = styled.h2``;
 export const Subheading = styled.h3``;
 export const H4 = styled.h4``;
