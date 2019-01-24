@@ -27,7 +27,6 @@ export const query = graphql`
       frontmatter {
         title
         published
-        series
         description
         tags
         cover_image
