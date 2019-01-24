@@ -11,7 +11,7 @@ const Post = ({ data }) => {
     <Layout>
       <SEO
         title={frontmatter.title}
-        keywords={frontmatter.tags.split(',').map(s => s.trim())}
+        keywords={(frontmatter.tags || '').split(',').map(s => s.trim())}
       />
       {renderHtml(htmlAst, frontmatter)}
     </Layout>
