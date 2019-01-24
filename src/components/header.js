@@ -1,42 +1,51 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
+
+import { DIMENSIONS } from '../constants/styles';
+
+import { Title } from '../basics/Text';
+
+const El = styled.div`
+  display: grid;
+  grid-template: 1fr / 1fr ${DIMENSIONS.centerColumn} 1fr;
+  color: #eee;
+  background: #922724;
+  padding: 1rem 0;
+`;
+const LeftEl = styled(Title)`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0;
+`;
+
+const TitleEl = styled(Title)`
+  margin: 0;
+`;
+const LinkEl = styled(Link)`
+  color: #eee;
+  text-decoration: none;
+  padding: 0 1rem;
+`;
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </div>
-)
+  <El>
+    <LeftEl>
+      <LinkEl to="/">/</LinkEl>
+    </LeftEl>
+    <TitleEl>{siteTitle}</TitleEl>
+    <div />
+  </El>
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;
