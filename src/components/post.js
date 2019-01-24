@@ -2,11 +2,20 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { renderHtml } from '../helpers/renderHtml';
+import SEO from './seo';
 import Layout from './layout';
 
 const Post = ({ data }) => {
   const { htmlAst, frontmatter } = data.markdownRemark;
-  return <Layout>{renderHtml(htmlAst, frontmatter)}</Layout>;
+  return (
+    <Layout>
+      <SEO
+        title={frontmatter.title}
+        keywords={frontmatter.tags.split(',').map(s => s.trim())}
+      />
+      {renderHtml(htmlAst, frontmatter)}
+    </Layout>
+  );
 };
 
 export default Post;
