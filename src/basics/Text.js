@@ -3,9 +3,21 @@ import styled from 'styled-components';
 export const Article = styled.article``;
 export const Text = styled.span``;
 export const Block = styled.div``;
-export const Paragraph = styled.p``;
-export const TextLink = styled.a``;
-export const Image = styled.img``;
+export const Paragraph = styled.p`
+  line-height: 1.5;
+`;
+export const TextLink = styled.a`
+  text-decoration: none;
+  color: #93261f;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+export const Image = styled.img`
+  display: block;
+  max-width: 100%;
+  margin: auto;
+`;
 export const List = styled.ul``;
 export const OrderedList = styled.ol``;
 export const ListItem = styled.li``;
