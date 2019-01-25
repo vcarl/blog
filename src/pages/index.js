@@ -1,9 +1,10 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import { Paragraph, Block, Heading } from '../basics/Text';
+import { Link } from '../basics/Link';
 
 const IndexPage = ({ data }) => {
   const { title, description } = data.site.siteMetadata;
