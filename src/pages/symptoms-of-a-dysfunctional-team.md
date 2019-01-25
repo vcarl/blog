@@ -7,6 +7,7 @@ description:
 tags: career, beginners, learning
 cover_image: https://thepracticaldev.s3.amazonaws.com/i/75e8dgme0i7ynthtf6m1.jpg
 canonical_url: https://medium.com/@vcarl/symptoms-of-a-dysfunctional-team-453b6a4b9b04
+date: 2018-01-21
 ---
 
 (image credit: [rawpixel](https://unsplash.com/photos/w9YHKTK-wLo) on unsplash)
