@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import { renderHtml } from '../helpers/renderHtml';
+
 import SEO from './seo';
 import Layout from './layout';
 

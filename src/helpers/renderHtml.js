@@ -20,7 +20,7 @@ import {
 export const renderHtml = (ast, frontmatter) => {
   return (
     <Article>
-      <Title style={{ display: 'none' }}>{frontmatter.title}</Title>
+      <Title>{frontmatter.title}</Title>
       {renderTree(ast.children)}
     </Article>
   );
