@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import styledNormalize from 'styled-normalize'
+import { createGlobalStyle } from 'styled-components';
+import styledNormalize from 'styled-normalize';
 
 const FONTS = {
   FontName: [
@@ -10,7 +10,7 @@ const FONTS = {
     //   style: "normal",
     // },
   ],
-}
+};
 
 const GlobalStyles = createGlobalStyle`
   body,
@@ -65,6 +65,6 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
-`
+`;
 
-export default GlobalStyles
+export default GlobalStyles;

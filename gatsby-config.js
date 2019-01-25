@@ -6,6 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,4 +40,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
-}
+};
