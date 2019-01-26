@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 export const Article = styled.article``;
 export const Text = styled.span``;
+export const Small = styled.small`
+  color: #666;
+`;
 export const Block = styled.div``;
 export const Paragraph = styled.p`
   line-height: 1.5;
@@ -14,14 +17,14 @@ export const Code = styled.pre`
   border-radius: 2px;
   line-height: 1.3;
 `;
-export const InlineCode = styled.pre`
-  display: inline-block;
+export const InlineCode = styled.span`
   margin: 0;
   background: #e6e6e6;
   padding: 0 3px;
   border: 1px solid #bbb;
   border-radius: 2px;
   line-height: 1.2;
+  font-family: monospace;
 `;
 export const TextLink = styled.a`
   text-decoration: none;
