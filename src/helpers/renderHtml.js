@@ -5,6 +5,8 @@ import {
   Paragraph,
   Code,
   TextLink,
+  List,
+  ListItem,
   Break,
   Image,
   Title,
@@ -38,11 +40,11 @@ const renderTree = nodes =>
       return value;
     }
     if (type === 'element') {
-      const { tagName: Component, props, noChildren } = mapTagToComponent(
-        tagName,
-        properties,
-        children,
-      );
+      const {
+        tagName: Component,
+        props,
+        noChildren,
+      } = mapTagToComponent(tagName, properties, children);
       // img and hrs can't be rendered with children or React bitches.
       return noChildren ? (
         <Component key={key++} {...props} />
@@ -100,6 +102,16 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'span':
       return {
         tagName: Text,
+        props,
+      };
+    case 'ul':
+      return {
+        tagName: List,
+        props,
+      };
+    case 'li':
+      return {
+        tagName: ListItem,
         props,
       };
     case 'pre':
