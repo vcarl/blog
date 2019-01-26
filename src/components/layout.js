@@ -10,8 +10,8 @@ const Layout = ({ children, title }) => (
   <>
     <GlobalStyles />
     <Header siteTitle={title} />
+    {children}
     <Container>
-      {children}
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}
