@@ -35,12 +35,13 @@ let key = 0;
 const renderTree = nodes =>
   nodes.map(({ type, tagName, properties, children, value }) => {
     if (type === 'text') {
-      return value.replace('\n', ' ');
+      return value;
     }
     if (type === 'element') {
       const { tagName: Component, props, noChildren } = mapTagToComponent(
         tagName,
         properties,
+        children,
       );
       // img and hrs can't be rendered with children or React bitches.
       return noChildren ? (
@@ -54,7 +55,7 @@ const renderTree = nodes =>
     return 'UNKNOWN NODE';
   });
 
-export const mapTagToComponent = (tagName, props) => {
+export const mapTagToComponent = (tagName, props, children) => {
   switch (tagName) {
     case 'root':
       return { tagName: 'article', props };
@@ -100,6 +101,26 @@ export const mapTagToComponent = (tagName, props) => {
       return {
         tagName: Text,
         props,
+      };
+    case 'pre':
+      // Remark parses multiline code blocks weirdly, there's a nested `code`
+      // in there, which breaks this parser's 1:1 tagName:Component assumption.
+      // This is hacky but it works.
+      return {
+        tagName: Code,
+        props: {
+          ...props,
+          children: renderTree(children[0].children),
+        },
+        noChildren: true,
+      };
+    case 'code':
+      // Syntax highlighting globs onto all pre tags with a certain class, so
+      // strip the class from inline blocks.
+      const { className, ...rest } = props;
+      return {
+        tagName: InlineCode,
+        props: rest,
       };
     case 'h4':
       return {
