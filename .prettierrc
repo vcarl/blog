@@ -5,7 +5,7 @@
   "arrowParens": "avoid",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
-  "printWidth": 80,
+  "printWidth": 72,
   "proseWrap": "always",
   "tabWidth": 2,
   "useTabs": false
