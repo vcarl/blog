@@ -3,6 +3,9 @@ import { graphql } from 'gatsby';
 
 import { renderHtml } from '../helpers/renderHtml';
 
+import CoverImage from '../basics/CoverImage';
+import { Container } from '../basics/Layout';
+
 import SEO from './seo';
 import Layout from './layout';
 
@@ -10,11 +13,12 @@ const Post = ({ data }) => {
   const { htmlAst, frontmatter } = data.markdownRemark;
   return (
     <Layout title={frontmatter.title}>
+      {frontmatter.cover_image && <CoverImage src={frontmatter.cover_image} />}
       <SEO
         title={frontmatter.title}
         keywords={(frontmatter.tags || '').split(',').map(s => s.trim())}
       />
-      {renderHtml(htmlAst, frontmatter)}
+      <Container>{renderHtml(htmlAst, frontmatter)}</Container>
     </Layout>
   );
 };
