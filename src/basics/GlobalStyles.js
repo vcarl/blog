@@ -1,16 +1,16 @@
 import { createGlobalStyle } from 'styled-components';
 import styledNormalize from 'styled-normalize';
 
-const FONTS = {
-  FontName: [
-    // {
-    //   name: "font"
-    //   filename: "FontName",
-    //   weight: FONT_WEIGHT.regular,
-    //   style: "normal",
-    // },
-  ],
-};
+import charissilBoldWoff from '../fonts/charissilb.woff';
+import charissilBoldWoff2 from '../fonts/charissilb.woff2';
+import charissilBoldItalicWoff from '../fonts/charissilbi.woff';
+import charissilBoldItalicWoff2 from '../fonts/charissilbi.woff2';
+import charissilItalicWoff from '../fonts/charissili.woff';
+import charissilItalicWoff2 from '../fonts/charissili.woff2';
+import charissilRegularWoff from '../fonts/charissilr.woff';
+import charissilRegularWoff2 from '../fonts/charissilr.woff2';
+import latoWoff from '../fonts/lato.woff';
+import latoWoff2 from '../fonts/lato.woff2';
 
 const GlobalStyles = createGlobalStyle`
   body,
@@ -25,23 +25,45 @@ const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.background};
   }
 
-  /* stylelint-disable */
-  ${Object.entries(FONTS).map(
-    ([name, { filename, weight, style }]) =>
-      `
-    @font-face {
-      font-family: ${name};
-      src: url("/fonts/${name}/${filename}.eot");
-      src: url("/fonts/${name}/${filename}.eot?#iefix")
-          format("embedded-opentype"),
-        url("/fonts/${name}/${filename}.woff2") format("woff2"),
-        url("/fonts/${name}/${filename}.woff") format("woff");
-      font-weight: ${weight};
-      font-style: ${style};
-    }
-  `,
-  )}
-  /* stylelint-enable */
+  @font-face {
+    font-family: charissil;
+    src: url("${charissilBoldWoff2}") format("woff2"),
+      url("${charissilBoldWoff}") format("woff");
+    font-weight: bold;
+    font-style: regular;
+  }
+  }
+  @font-face {
+    font-family: charissil;
+    src: url("${charissilBoldItalicWoff2}") format("woff2"),
+      url("${charissilBoldItalicWoff}") format("woff");
+    font-weight: bold;
+    font-style: italic;
+  }
+  }
+  @font-face {
+    font-family: charissil;
+    src: url("${charissilItalicWoff2}") format("woff2"),
+      url("${charissilItalicWoff}") format("woff");
+    font-weight: regular;
+    font-style: italic;
+  }
+  }
+  @font-face {
+    font-family: charissil;
+    src: url("${charissilRegularWoff2}") format("woff2"),
+      url("${charissilRegularWoff}") format("woff");
+    font-weight: regular;
+    font-style: regular;
+  }
+  }
+  @font-face {
+    font-family: lato;
+    src: url("${latoWoff2}") format("woff2"),
+      url("${latoWoff}") format("woff");
+    font-weight: regular;
+    font-style: regular;
+  }
 
   ${styledNormalize}
 
@@ -52,7 +74,7 @@ const GlobalStyles = createGlobalStyle`
   button {
     font-size: 16px;
     font-weight: 400;
-    font-family: sans-serif;
+    font-family: 'charissil';
   }
 
   /* http://tachyons.io/docs/layout/box-sizing/ */

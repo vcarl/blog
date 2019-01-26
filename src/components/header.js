@@ -11,6 +11,7 @@ const El = styled.div`
 `;
 
 const TitleEl = styled(Title)`
+  font-family: monospace;
   margin: 0;
 `;
 const LinkEl = styled(Link)`
