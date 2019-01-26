@@ -3,5 +3,10 @@
  *
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
+import React from 'react';
 
-// You can delete this file if you're not using it
+import Providers from './src/components/Providers';
+
+export const wrapRootElement = ({ element }) => (
+  <Providers>{element}</Providers>
+);

@@ -7,14 +7,14 @@ import { Title } from '../basics/Text';
 
 const El = styled.div`
   color: #eee;
-  background: #922724;
+  background: ${({ theme }) => theme.primary};
 `;
 
 const TitleEl = styled(Title)`
   margin: 0;
 `;
 const LinkEl = styled(Link)`
-  color: #eee;
+  color: ${({ theme }) => theme.textContrast};
 `;
 
 const Header = () => (

@@ -18,11 +18,11 @@ const GlobalStyles = createGlobalStyle`
   input,
   textarea,
   button {
-    color: #333;
+    color: ${({ theme }) => theme.text};
   }
 
   body {
-    background: #eee;
+    background: ${({ theme }) => theme.background};
   }
 
   /* stylelint-disable */

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Article = styled.article``;
 export const Text = styled.span``;
 export const Small = styled.small`
-  color: #666;
+  color: ${({ theme }) => theme.textMuted};
 `;
 export const Block = styled.div``;
 export const Paragraph = styled.p`
@@ -11,24 +11,24 @@ export const Paragraph = styled.p`
 `;
 export const Code = styled.pre`
   margin: 0;
-  background: #e6e6e6;
+  background: ${({ theme }) => theme.mutedBackground};
   padding: 0.5rem;
-  border: 1px solid #bbb;
+  border: 1px solid ${({ theme }) => theme.mutedBorder};
   border-radius: 2px;
   line-height: 1.3;
 `;
 export const InlineCode = styled.span`
   margin: 0;
-  background: #e6e6e6;
+  background: ${({ theme }) => theme.mutedBackground};
   padding: 0 3px;
-  border: 1px solid #bbb;
+  border: 1px solid ${({ theme }) => theme.mutedBorder};
   border-radius: 2px;
   line-height: 1.2;
   font-family: monospace;
 `;
 export const TextLink = styled.a`
   text-decoration: none;
-  color: #93261f;
+  color: ${({ theme }) => theme.primary};
   &:hover {
     text-decoration: underline;
   }
