@@ -3,6 +3,7 @@ import {
   Article,
   Text,
   Paragraph,
+  Code,
   TextLink,
   Break,
   Image,
@@ -12,6 +13,7 @@ import {
   H4,
   H5,
   H6,
+  InlineCode,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
