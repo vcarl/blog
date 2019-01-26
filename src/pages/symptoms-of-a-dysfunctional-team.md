@@ -7,10 +7,10 @@ description:
 tags: career, beginners, learning
 cover_image: https://thepracticaldev.s3.amazonaws.com/i/75e8dgme0i7ynthtf6m1.jpg
 canonical_url: https://medium.com/@vcarl/symptoms-of-a-dysfunctional-team-453b6a4b9b04
-date: 2018-01-21
+date: 2019-01-21
 ---
 
-(image credit: [rawpixel](https://unsplash.com/photos/w9YHKTK-wLo) on unsplash)
+(image credit: [rawpixel](https://unsplash.com/photos/w9YHKTK-wLo))
 
 I've had a lot of jobs (8 since 2012), which means I've worked with a lot of
 teams. One of the main reasons I changed jobs so frequently for a couple years

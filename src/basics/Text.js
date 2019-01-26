@@ -6,6 +6,23 @@ export const Block = styled.div``;
 export const Paragraph = styled.p`
   line-height: 1.5;
 `;
+export const Code = styled.pre`
+  margin: 0;
+  background: #e6e6e6;
+  padding: 0.5rem;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  line-height: 1.3;
+`;
+export const InlineCode = styled.pre`
+  display: inline-block;
+  margin: 0;
+  background: #e6e6e6;
+  padding: 0 3px;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  line-height: 1.2;
+`;
 export const TextLink = styled.a`
   text-decoration: none;
   color: #93261f;

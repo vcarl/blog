@@ -9,6 +9,8 @@ import { Container } from '../basics/Layout';
 import SEO from './seo';
 import Layout from './layout';
 
+import '../components/syntax.css';
+
 const Post = ({ data }) => {
   const { htmlAst, frontmatter } = data.markdownRemark;
   return (
