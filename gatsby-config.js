@@ -49,6 +49,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-twitter',
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

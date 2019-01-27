@@ -48,6 +48,7 @@ export const Break = styled.hr`
   max-width: 6rem;
   margin: 3rem auto;
 `;
+export const Quote = styled.blockquote``;
 
 const titleFont = "font-family: 'lato', 'arial', sans-serif";
 
