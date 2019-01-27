@@ -2,22 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GlobalStyles from '../basics/GlobalStyles';
-import { Container } from '../basics/Layout';
 
 import Header from './header';
+import Footer from './Footer';
 
 const Layout = ({ children, title }) => (
   <>
     <GlobalStyles />
     <Header siteTitle={title} />
     {children}
-    <Container>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </Container>
+    <Footer />
   </>
 );
 

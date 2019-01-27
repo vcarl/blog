@@ -20,17 +20,21 @@ const IndexPage = ({ data }) => {
   return (
     <Layout title={title}>
       <Container>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO
+          title="Home"
+          keywords={[`gatsby`, `application`, `react`]}
+        />
         <Paragraph>{description}</Paragraph>
         <Paragraph>Posts:</Paragraph>
         {data.allMarkdownRemark.edges
           .map(({ node }) => node)
           .sort(
             (a, b) =>
-              new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
+              new Date(b.frontmatter.date) -
+              new Date(a.frontmatter.date),
           )
           .map(({ fields, frontmatter }) => (
-            <Block>
+            <Block key={fields.slug}>
               <PostTitleEl>
                 <Link to={fields.slug}>{frontmatter.title}</Link>
               </PostTitleEl>
@@ -38,7 +42,7 @@ const IndexPage = ({ data }) => {
               <PostDescription>
                 <Block>
                   <Small>
-                    {new Date(frontmatter.date).toISOString().slice(0, 10)}
+                    {frontmatter.date}, {frontmatter.ago}
                   </Small>
                 </Block>
                 {frontmatter.description}
@@ -70,7 +74,8 @@ export const query = graphql`
             published
             title
             description
-            date
+            date(formatString: "YYYY-MM-DD")
+            ago: date(fromNow: true)
           }
         }
       }
