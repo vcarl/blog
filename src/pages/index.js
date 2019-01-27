@@ -45,10 +45,12 @@ const IndexPage = ({ data }) => {
       }, {}),
   ).map(([title, posts]) => {
     posts = posts.sort(dateComparator);
+    const date = posts[0].frontmatter.date;
     return {
       title,
-      date: posts[0].frontmatter.date,
-      posts,
+      date,
+      // Reverse posts to show from first published to last published
+      posts: posts.reverse(),
       type: 'series',
     };
   });
