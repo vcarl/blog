@@ -19,6 +19,8 @@ import {
   H6,
   InlineCode,
   Quote,
+  Block,
+  Iframe,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
@@ -113,6 +115,11 @@ export const mapTagToComponent = (tagName, props, children) => {
         tagName: Text,
         props,
       };
+    case 'div':
+      return {
+        tagName: Block,
+        props,
+      };
     case 'ul':
       return {
         tagName: List,
@@ -158,7 +165,13 @@ export const mapTagToComponent = (tagName, props, children) => {
         tagName: H6,
         props,
       };
+    case 'iframe':
+      return {
+        tagName: Iframe,
+        props,
+      };
     default:
+      console.log('Tried to render unhandled tag', tagName);
       return { tagName: Text, props };
   }
 };
