@@ -38,12 +38,17 @@ export const Image = styled.img`
   max-width: 100%;
   margin: auto;
 `;
-export const List = styled.ul``;
+export const List = styled.ul`
+  line-height: 1.3;
+`;
 export const OrderedList = styled.ol``;
 export const ListItem = styled.li``;
-export const Break = styled.hr``;
+export const Break = styled.hr`
+  max-width: 6rem;
+  margin: 3rem auto;
+`;
 
-const titleFont = "font-family: 'lato', sans-serif";
+const titleFont = "font-family: 'lato', 'arial', sans-serif";
 
 export const Title = styled.h1`
   ${titleFont};
