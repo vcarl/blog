@@ -43,7 +43,7 @@ export const OrderedList = styled.ol``;
 export const ListItem = styled.li``;
 export const Break = styled.hr``;
 
-const titleFont = "font-family: 'lato'";
+const titleFont = "font-family: 'lato', sans-serif";
 
 export const Title = styled.h1`
   ${titleFont};

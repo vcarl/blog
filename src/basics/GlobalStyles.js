@@ -74,7 +74,7 @@ const GlobalStyles = createGlobalStyle`
   button {
     font-size: 16px;
     font-weight: 400;
-    font-family: 'charissil';
+    font-family: 'charissil', serif;
   }
 
   /* http://tachyons.io/docs/layout/box-sizing/ */
