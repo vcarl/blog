@@ -1,5 +1,5 @@
 ---
-title: 'Questions to ask your interviewer: Development and emergencies'
+title: Development and emergencies
 published: true
 description:
   What should you respond when an interviewer asks you, “Do you have any
