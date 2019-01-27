@@ -10,9 +10,15 @@ import SEO from './seo';
 import Layout from './layout';
 
 import '../components/syntax.css';
+import { TextLink } from '../basics/Text';
 
 const Post = ({ data }) => {
-  const { htmlAst, frontmatter } = data.markdownRemark;
+  const {
+    htmlAst,
+    fileAbsolutePath,
+    frontmatter,
+  } = data.markdownRemark;
+  const path = fileAbsolutePath.split('src/')[1];
   return (
     <Layout title={frontmatter.title}>
       {frontmatter.cover_image && (
@@ -27,6 +33,13 @@ const Post = ({ data }) => {
           .map(s => s.trim())}
       />
       <Container>{renderHtml(htmlAst, frontmatter)}</Container>
+      <Container>
+        <TextLink
+          href={`https://github.com/vcarl/blog/edit/master/src/${path}`}
+        >
+          Edit on GitHub
+        </TextLink>
+      </Container>
     </Layout>
   );
 };
@@ -37,6 +50,7 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       htmlAst
+      fileAbsolutePath
       frontmatter {
         title
         published

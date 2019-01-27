@@ -43,8 +43,9 @@ const Footer = () => (
       ))}
     </Block>
     <Paragraph>
-      Edit on{' '}
-      <TextLink href="https://github.com/vcarl/blog">GitHub</TextLink>
+      <TextLink href="https://github.com/vcarl/blog">
+        View source
+      </TextLink>
     </Paragraph>
     <Paragraph>
       © {new Date().getFullYear()}, Built with
