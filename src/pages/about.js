@@ -14,7 +14,6 @@ import {
 import Layout from '../components/layout';
 
 import profilePhoto from '../images/vcarl.jpg';
-import caen from '../images/caen.jpg';
 
 const ImageEl = styled(Image)`
   max-width: 20rem;
@@ -68,63 +67,26 @@ export default () => (
         , with feedback from other moderators.
       </Paragraph>
       <Paragraph>
-        I took my first programming class at 12, through a summer camp
-        put on by the University of Michigan. I was one of the youngest,
-        and they ended up putting me on the website for the next year. I
-        attended 3 years as a camper and 2 more as a junior counselor,
-        learning (and later, teaching) how to use C++ and do 3d
-        animation. I spent years learning how to write code on my own,
-        competing in programming competitions through my freshman year
-        at Michigan Tech.
-      </Paragraph>
-      <Image src={caen} />
-      <Subheading>Work</Subheading>
-      <Paragraph>
-        I’ve worked at a series of startups. In 2012, I was “founding
-        employee” at a hardware startup comprised of U of Michigan
-        students trying to build smart-bikes to replace kiosk-based
-        bikeshare systems. We graduated, burned outselves out, and the
-        company failed. I did a contract, then in 2015, I joined an
-        agriculture software company. I built their webapp for just
-        under a year and a half, shipping some major features and
-        migrating a bunch of code from Backbone to React. I was laid off
-        in 2016, and thus ends my steady employment.
+        I build web apps, specializing with React. I take a minimalist
+        approach to it, prefering to solve most problems myself rather
+        than pull in too many libraries. I find React to be expressive
+        enough on its own to let me solve problems quickly, but there
+        are a few libraries that I reach for frequently. In particular,{' '}
+        <InlineCode>formik</InlineCode> is a marvelous abstraction over
+        forms, <InlineCode>react-flip-move</InlineCode> is an incredibly
+        simple way to animate simple list transitions, and{' '}
+        <InlineCode>react-motion</InlineCode> is a great way to add
+        physically-based transitions for arbitrary values.
       </Paragraph>
       <Paragraph>
-        I joined an ad tech company, but left after almost 6 months
-        because the role was significantly different than I understood
-        during the interview. I moved to New York and joined a health
-        tech company with the task of rebooting their product. I left
-        just under 5 months later after my role dramatically changed.
-      </Paragraph>
-      <Paragraph>
-        After that, I felt so burned out I didn’t line up a job and
-        spent a few months “on sabbatical.” I’d left my previous jobs
-        feeling as though I’d had the rug pulled out from under me, and
-        took some time off to decompress. Mostly, I read about
-        cryptocurrency, played video games (
-        <TextLink href="https://store.steampowered.com/app/251110/INFRA/">
-          INFRA
-        </TextLink>{' '}
-        is great), worked on side projects, and took online classes.
-      </Paragraph>
-      <Paragraph>
-        My sabbatical ended when I got an offer to work at a Fortune 100
-        company via an agency. I did that for just under 6 months, but
-        my time there was cut short by what I felt was an opportunity of
-        a lifetime. It’s what I’m doing now: I’ve helped build{' '}
+        I’m currently working for the Stellar Development Foundation,
+        making tools so that building on Stellar is easier to approach.
+        My most recent project before this was{' '}
         <TextLink href="https://www.stellarx.com/markets">
           StellarX
         </TextLink>
-        , and am working on tools for the Stellar Development
-        Foundation.
-      </Paragraph>
-      <Paragraph>
-        All told (including some recent org shifts without changing
-        teams), I’ve worked for 8 different companies since 2012. The
-        most constant force in my professional life has been Reactiflux,
-        which I’ve participated in since late 2014 and moderated since
-        late 2015.
+        , a trading platform for the exchange built into the Stellar
+        protocol.
       </Paragraph>
     </Container>
   </Layout>
