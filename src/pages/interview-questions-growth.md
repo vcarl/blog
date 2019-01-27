@@ -1,5 +1,5 @@
 ---
-title: 'Questions to ask your interviewer: Growth'
+title: Growth
 published: true
 description:
   What should you respond when an interviewer asks you, “Do you have any

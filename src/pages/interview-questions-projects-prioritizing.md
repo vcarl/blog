@@ -1,7 +1,5 @@
 ---
-title:
-  'Questions to ask your interviewer: Project management &
-  prioritization'
+title: Project management & prioritization
 published: true
 description:
   What should you respond when an interviewer asks you, “Do you have any
