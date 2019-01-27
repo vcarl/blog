@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import PageNav from '../components/PageNav';
+
 import { Container } from '../basics/Layout';
 import { Link } from '../basics/Link';
 import { Paragraph, Block, Heading, Small } from '../basics/Text';
@@ -24,8 +26,9 @@ const IndexPage = ({ data }) => {
           title="Home"
           keywords={[`gatsby`, `application`, `react`]}
         />
+
         <Paragraph>{description}</Paragraph>
-        <Paragraph>Posts:</Paragraph>
+        <PageNav />
         {data.allMarkdownRemark.edges
           .map(({ node }) => node)
           .sort(

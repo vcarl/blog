@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 
 export const Article = styled.article``;
 export const Text = styled.span``;
@@ -26,7 +27,7 @@ export const InlineCode = styled.span`
   line-height: 1.2;
   font-family: monospace;
 `;
-export const TextLink = styled.a`
+export const TextLink = styled(OutboundLink)`
   text-decoration: none;
   color: ${({ theme }) => theme.primary};
   &:hover {
