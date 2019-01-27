@@ -91,29 +91,28 @@ export default () => (
         in 2016, and thus ends my steady employment.
       </Paragraph>
       <Paragraph>
-        I joined an ad tech company, but left after almost 6 months due
-        to frustrations with the stack—I wanted to build web apps, not
-        data pipelines. I moved to New York and joined a health tech
-        company with the task of rebooting their product. I left just
-        under 5 months later after my responsibilities were shifted to
-        supporting the backend.
+        I joined an ad tech company, but left after almost 6 months
+        because the role was significantly different than I understood
+        during the interview. I moved to New York and joined a health
+        tech company with the task of rebooting their product. I left
+        just under 5 months later after my role dramatically changed.
       </Paragraph>
       <Paragraph>
         After that, I felt so burned out I didn’t line up a job and
-        spent a few months “on sabbatical.” Mostly, I read about
+        spent a few months “on sabbatical.” I’d left my previous jobs
+        feeling as though I’d had the rug pulled out from under me, and
+        took some time off to decompress. Mostly, I read about
         cryptocurrency, played video games (
         <TextLink href="https://store.steampowered.com/app/251110/INFRA/">
           INFRA
         </TextLink>{' '}
-        is great), worked on side projects, took online classes, and
-        argued on reddit.
+        is great), worked on side projects, and took online classes.
       </Paragraph>
       <Paragraph>
         My sabbatical ended when I got an offer to work at a Fortune 100
-        company in Wall Street via an agency. I did that for just under
-        6 months, but my time there was cut short by what I felt was an
-        opportunity of a lifetime. It’s what I’m doing now: I’ve helped
-        build{' '}
+        company via an agency. I did that for just under 6 months, but
+        my time there was cut short by what I felt was an opportunity of
+        a lifetime. It’s what I’m doing now: I’ve helped build{' '}
         <TextLink href="https://www.stellarx.com/markets">
           StellarX
         </TextLink>
@@ -122,7 +121,10 @@ export default () => (
       </Paragraph>
       <Paragraph>
         All told (including some recent org shifts without changing
-        teams), I’ve worked for 8 different companies since 2012.
+        teams), I’ve worked for 8 different companies since 2012. The
+        most constant force in my professional life has been Reactiflux,
+        which I’ve participated in since late 2014 and moderated since
+        late 2015.
       </Paragraph>
     </Container>
   </Layout>
