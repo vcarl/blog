@@ -43,11 +43,10 @@ const IndexPage = ({ data }) => {
               </PostTitleEl>
 
               <PostDescription>
-                <Block>
-                  <Small>
-                    {frontmatter.date}, {frontmatter.ago}
-                  </Small>
-                </Block>
+                <Small>
+                  {frontmatter.date}, {frontmatter.ago}
+                </Small>
+                <br />
                 {frontmatter.description}
               </PostDescription>
             </Block>

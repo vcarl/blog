@@ -1,4 +1,5 @@
 import React from 'react';
+
 import {
   Article,
   Text,
@@ -16,12 +17,14 @@ import {
   H5,
   H6,
   InlineCode,
+  Quote,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
 // components with it. Thus, HTML tree renderer. Maps tagNames to a
 // styled-component, plus some quirks due to HTML validation.
 export const renderHtml = (ast, frontmatter) => {
+  console.log(ast);
   return (
     <Article>
       <Title>{frontmatter.title}</Title>
@@ -70,6 +73,11 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'p':
       return {
         tagName: Paragraph,
+        props,
+      };
+    case 'blockquote':
+      return {
+        tagName: Quote,
         props,
       };
     case 'h1':

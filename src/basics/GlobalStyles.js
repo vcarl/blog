@@ -87,6 +87,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+
+  twitter-widget {
+    margin: auto;
+  }
 `;
 
 export default GlobalStyles;
