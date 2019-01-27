@@ -56,7 +56,6 @@ const IndexPage = ({ data }) => {
   });
 
   const allEntries = [...posts, ...series].sort(dateComparator);
-  window.allEntries = allEntries;
 
   return (
     <Layout title={title}>
