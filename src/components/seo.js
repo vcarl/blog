@@ -75,7 +75,7 @@ function SEO({
               .concat(meta)
               .filter(Boolean)
               .map(m => (
-                <meta {...m} />
+                <meta key={m.name || m.property} {...m} />
               ))}
             {canonicalUrl && (
               <link rel="canonical" href={canonicalUrl} />

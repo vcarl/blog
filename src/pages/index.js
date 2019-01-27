@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
               new Date(a.frontmatter.date),
           )
           .map(({ fields, frontmatter }) => (
-            <Block>
+            <Block key={fields.slug}>
               <PostTitleEl>
                 <Link to={fields.slug}>{frontmatter.title}</Link>
               </PostTitleEl>
