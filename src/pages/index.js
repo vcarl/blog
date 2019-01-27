@@ -42,9 +42,7 @@ const IndexPage = ({ data }) => {
               <PostDescription>
                 <Block>
                   <Small>
-                    {new Date(frontmatter.date)
-                      .toISOString()
-                      .slice(0, 10)}
+                    {frontmatter.date}, {frontmatter.ago}
                   </Small>
                 </Block>
                 {frontmatter.description}
@@ -76,7 +74,8 @@ export const query = graphql`
             published
             title
             description
-            date
+            date(formatString: "YYYY-MM-DD")
+            ago: date(fromNow: true)
           }
         }
       }
