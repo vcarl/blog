@@ -14,6 +14,7 @@ import {
 import Layout from '../components/layout';
 
 import profilePhoto from '../images/vcarl.jpg';
+import SEO from '../components/seo';
 
 const ImageEl = styled(Image)`
   max-width: 20rem;
@@ -31,6 +32,7 @@ const ImageEl = styled(Image)`
 export default () => (
   <Layout>
     <Container>
+      <SEO title="About" />
       <ImageEl src={profilePhoto} />
       <Title>About</Title>
       <Paragraph>

@@ -4,10 +4,12 @@ import { Container } from '../basics/Layout';
 import { InlineCode, Paragraph, TextLink, Title } from '../basics/Text';
 
 import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 export default () => (
   <Layout>
     <Container>
+      <SEO title="About" />
       <Title>Motivations</Title>
       <Paragraph>
         I’ve been publishing posts on{' '}
