@@ -105,7 +105,7 @@ it to.
 
 ---
 
-Thanks for reading! I'm on Twitter as [@cvitullo](https://twitter.com/cvitullo)
+Thanks for reading! I'm on Twitter as [@vcarl_](https://twitter.com/vcarl_)
 (but most other places I'm vcarl). I moderate
 [Reactiflux](http://join.reactiflux.com/), a chatroom for React developers and
 [Nodeiflux](https://discordapp.com/invite/vUsrbjd), a chatroom for Node.JS
