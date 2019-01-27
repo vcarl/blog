@@ -20,14 +20,18 @@ const IndexPage = ({ data }) => {
   return (
     <Layout title={title}>
       <Container>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <SEO
+          title="Home"
+          keywords={[`gatsby`, `application`, `react`]}
+        />
         <Paragraph>{description}</Paragraph>
         <Paragraph>Posts:</Paragraph>
         {data.allMarkdownRemark.edges
           .map(({ node }) => node)
           .sort(
             (a, b) =>
-              new Date(b.frontmatter.date) - new Date(a.frontmatter.date),
+              new Date(b.frontmatter.date) -
+              new Date(a.frontmatter.date),
           )
           .map(({ fields, frontmatter }) => (
             <Block>
@@ -38,7 +42,9 @@ const IndexPage = ({ data }) => {
               <PostDescription>
                 <Block>
                   <Small>
-                    {new Date(frontmatter.date).toISOString().slice(0, 10)}
+                    {new Date(frontmatter.date)
+                      .toISOString()
+                      .slice(0, 10)}
                   </Small>
                 </Block>
                 {frontmatter.description}

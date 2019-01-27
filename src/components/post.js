@@ -15,10 +15,14 @@ const Post = ({ data }) => {
   const { htmlAst, frontmatter } = data.markdownRemark;
   return (
     <Layout title={frontmatter.title}>
-      {frontmatter.cover_image && <CoverImage src={frontmatter.cover_image} />}
+      {frontmatter.cover_image && (
+        <CoverImage src={frontmatter.cover_image} />
+      )}
       <SEO
         title={frontmatter.title}
-        keywords={(frontmatter.tags || '').split(',').map(s => s.trim())}
+        keywords={(frontmatter.tags || '')
+          .split(',')
+          .map(s => s.trim())}
       />
       <Container>{renderHtml(htmlAst, frontmatter)}</Container>
     </Layout>
