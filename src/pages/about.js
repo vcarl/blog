@@ -110,14 +110,14 @@ export default () => (
       </Paragraph>
       <Paragraph>
         My sabbatical ended when I got an offer to work at a Fortune 100
-        company in Wall Street via an agency. I did that for a just
-        under 6 months, but my time there was cut short by when I felt
-        was an opportunity of a lifetime. It’s what I’m doing now: in
-        the recent past, I built{' '}
+        company in Wall Street via an agency. I did that for just under
+        6 months, but my time there was cut short by what I felt was an
+        opportunity of a lifetime. It’s what I’m doing now: I’ve helped
+        build{' '}
         <TextLink href="https://www.stellarx.com/markets">
           StellarX
         </TextLink>
-        , and am now building tools for the Stellar Development
+        , and am working on tools for the Stellar Development
         Foundation.
       </Paragraph>
       <Paragraph>
