@@ -57,6 +57,7 @@ export const query = graphql`
         description
         tags
         cover_image
+        series
         canonical_url
       }
     }

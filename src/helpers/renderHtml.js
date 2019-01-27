@@ -12,6 +12,7 @@ import {
   Image,
   Title,
   Heading,
+  Small,
   Subheading,
   H4,
   H5,
@@ -23,15 +24,15 @@ import {
 // remark includes an "AST" of HTML, and I want to be able to use styled-
 // components with it. Thus, HTML tree renderer. Maps tagNames to a
 // styled-component, plus some quirks due to HTML validation.
-export const renderHtml = (ast, frontmatter) => {
-  console.log(ast);
-  return (
-    <Article>
-      <Title>{frontmatter.title}</Title>
-      {renderTree(ast.children)}
-    </Article>
-  );
-};
+export const renderHtml = (ast, frontmatter) => (
+  <Article>
+    <Title>{frontmatter.title}</Title>
+    {frontmatter.series && (
+      <Small>Part of a series: {frontmatter.series}</Small>
+    )}
+    {renderTree(ast.children)}
+  </Article>
+);
 
 // This is an abomination, but this is statically rendered (thus will never
 // reorder) and it takes care of the key warning. Don't @ me.
