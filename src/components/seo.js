@@ -4,11 +4,12 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 function SEO({
+  canonicalUrl,
   description,
+  image,
+  keywords,
   lang,
   meta,
-  canonicalUrl,
-  keywords,
   title,
 }) {
   return (
@@ -42,6 +43,10 @@ function SEO({
                 property: `og:type`,
                 content: `website`,
               },
+              !!image && {
+                property: 'og:image',
+                content: image,
+              },
               {
                 name: `twitter:card`,
                 content: `summary`,
@@ -68,6 +73,7 @@ function SEO({
                   : [],
               )
               .concat(meta)
+              .filter(Boolean)
               .map(m => (
                 <meta {...m} />
               ))}

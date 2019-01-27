@@ -19,6 +19,7 @@ const Post = ({ data }) => {
         <CoverImage src={frontmatter.cover_image} />
       )}
       <SEO
+        image={frontmatter.cover_image}
         canonicalUrl={frontmatter.canonical_url}
         title={frontmatter.title}
         keywords={(frontmatter.tags || '')
