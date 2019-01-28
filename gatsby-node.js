@@ -24,6 +24,9 @@ exports.createPages = ({ graphql, actions }) => {
             fields {
               slug
             }
+            frontmatter {
+              series
+            }
           }
         }
       }
@@ -35,6 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
         component: path.resolve('./src/components/post.js'),
         context: {
           slug: node.fields.slug,
+          series: node.frontmatter.series || '',
         },
       });
     });
