@@ -5,9 +5,9 @@ import { Link } from '../basics/Link';
 
 const PageNav = () => (
   <Block>
-    <Link to="/about">who dis?</Link>
+    <Link to="/about">new blog who dis?</Link>
     {' – '}
-    <Link to="/motivation">whazis?</Link>
+    <Link to="/motivation">but why?</Link>
   </Block>
 );
 
