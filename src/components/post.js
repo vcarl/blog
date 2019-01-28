@@ -5,16 +5,18 @@ import { renderHtml } from '../helpers/renderHtml';
 
 import CoverImage from '../basics/CoverImage';
 import { Container } from '../basics/Layout';
+import { TextLink } from '../basics/Text';
 
 import SEO from './seo';
 import Layout from './layout';
 
 import '../components/syntax.css';
-import { TextLink } from '../basics/Text';
+import OtherPostsInSeries from './OtherPostsInSeries';
 
 const Post = ({ data }) => {
   const {
     htmlAst,
+    id,
     fileAbsolutePath,
     frontmatter,
   } = data.markdownRemark;
@@ -39,6 +41,12 @@ const Post = ({ data }) => {
         >
           Edit on GitHub
         </TextLink>
+        {data.allMarkdownRemark && (
+          <OtherPostsInSeries
+            currentId={id}
+            posts={data.allMarkdownRemark.edges.map(({ node }) => node)}
+          />
+        )}
       </Container>
     </Layout>
   );
@@ -47,8 +55,9 @@ const Post = ({ data }) => {
 export default Post;
 
 export const query = graphql`
-  query($slug: String!) {
+  query($slug: String!, $series: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
       htmlAst
       fileAbsolutePath
       frontmatter {
@@ -59,6 +68,23 @@ export const query = graphql`
         cover_image
         series
         canonical_url
+      }
+    }
+    allMarkdownRemark(
+      filter: { frontmatter: { series: { eq: $series } } }
+      sort: { fields: frontmatter___date, order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            series
+          }
+          fields {
+            slug
+          }
+        }
       }
     }
   }
