@@ -26,6 +26,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   @font-face {
+    font-display: fallback;
     font-family: charissil;
     src: url("${charissilBoldWoff2}") format("woff2"),
       url("${charissilBoldWoff}") format("woff");
@@ -34,6 +35,7 @@ const GlobalStyles = createGlobalStyle`
   }
   }
   @font-face {
+    font-display: fallback;
     font-family: charissil;
     src: url("${charissilBoldItalicWoff2}") format("woff2"),
       url("${charissilBoldItalicWoff}") format("woff");
@@ -42,6 +44,7 @@ const GlobalStyles = createGlobalStyle`
   }
   }
   @font-face {
+    font-display: fallback;
     font-family: charissil;
     src: url("${charissilItalicWoff2}") format("woff2"),
       url("${charissilItalicWoff}") format("woff");
@@ -50,6 +53,7 @@ const GlobalStyles = createGlobalStyle`
   }
   }
   @font-face {
+    font-display: fallback;
     font-family: charissil;
     src: url("${charissilRegularWoff2}") format("woff2"),
       url("${charissilRegularWoff}") format("woff");
@@ -58,6 +62,7 @@ const GlobalStyles = createGlobalStyle`
   }
   }
   @font-face {
+    font-display: fallback;
     font-family: lato;
     src: url("${latoWoff2}") format("woff2"),
       url("${latoWoff}") format("woff");
