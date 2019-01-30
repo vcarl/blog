@@ -21,6 +21,7 @@ import {
   Quote,
   Block,
   Iframe,
+  OrderedList,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
@@ -118,6 +119,11 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'div':
       return {
         tagName: Block,
+        props,
+      };
+    case 'ol':
+      return {
+        tagName: OrderedList,
         props,
       };
     case 'ul':
