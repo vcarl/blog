@@ -42,13 +42,20 @@ export const Image = styled.img`
 export const List = styled.ul`
   line-height: 1.3;
 `;
-export const OrderedList = styled.ol``;
+export const OrderedList = styled(List).attrs({ as: 'ol' })``;
 export const ListItem = styled.li``;
 export const Break = styled.hr`
   max-width: 6rem;
   margin: 3rem auto;
 `;
-export const Quote = styled.blockquote``;
+export const Quote = styled.blockquote`
+  padding-left: 1.5rem;
+  border-left: 2px solid ${({ theme }) => theme.mutedBorder};
+  margin: 2rem 1rem;
+  margin-right: 0;
+  font-style: italic;
+  font-size: 1.1em;
+`;
 
 const titleFont = "font-family: 'lato', 'arial', sans-serif";
 
