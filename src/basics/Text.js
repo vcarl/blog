@@ -6,6 +6,7 @@ export const Text = styled.span``;
 export const Small = styled.small`
   color: ${({ theme }) => theme.textMuted};
 `;
+export const Bold = styled.strong``;
 export const Block = styled.div``;
 export const Paragraph = styled.p`
   line-height: 1.5;

@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Article,
   Text,
+  Bold,
   Paragraph,
   Code,
   TextLink,
@@ -77,6 +78,11 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'p':
       return {
         tagName: Paragraph,
+        props,
+      };
+    case 'strong':
+      return {
+        tagName: Bold,
         props,
       };
     case 'blockquote':
