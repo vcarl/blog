@@ -52,10 +52,12 @@ export const Break = styled.hr`
 export const Quote = styled.blockquote`
   padding-left: 1.5rem;
   border-left: 2px solid ${({ theme }) => theme.mutedBorder};
-  margin: 2rem 1rem;
-  margin-right: 0;
+  margin-top: 0;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
   font-style: italic;
   font-size: 1.1em;
+  float: left;
 `;
 
 const titleFont = "font-family: 'lato', 'arial', sans-serif";
