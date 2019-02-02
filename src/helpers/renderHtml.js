@@ -3,6 +3,7 @@ import React from 'react';
 import {
   Article,
   Text,
+  Bold,
   Paragraph,
   Code,
   TextLink,
@@ -14,6 +15,7 @@ import {
   Heading,
   Small,
   Subheading,
+  H3,
   H4,
   H5,
   H6,
@@ -79,6 +81,11 @@ export const mapTagToComponent = (tagName, props, children) => {
         tagName: Paragraph,
         props,
       };
+    case 'strong':
+      return {
+        tagName: Bold,
+        props,
+      };
     case 'blockquote':
       return {
         tagName: Quote,
@@ -86,17 +93,32 @@ export const mapTagToComponent = (tagName, props, children) => {
       };
     case 'h1':
       return {
-        tagName: Title,
+        tagName: Heading,
         props,
       };
     case 'h2':
       return {
-        tagName: Heading,
+        tagName: Subheading,
         props,
       };
     case 'h3':
       return {
-        tagName: Subheading,
+        tagName: H3,
+        props,
+      };
+    case 'h4':
+      return {
+        tagName: H4,
+        props,
+      };
+    case 'h5':
+      return {
+        tagName: H5,
+        props,
+      };
+    case 'h6':
+      return {
+        tagName: H6,
         props,
       };
     case 'img':
@@ -155,21 +177,6 @@ export const mapTagToComponent = (tagName, props, children) => {
       return {
         tagName: InlineCode,
         props: rest,
-      };
-    case 'h4':
-      return {
-        tagName: H4,
-        props,
-      };
-    case 'h5':
-      return {
-        tagName: H5,
-        props,
-      };
-    case 'h6':
-      return {
-        tagName: H6,
-        props,
       };
     case 'iframe':
       return {

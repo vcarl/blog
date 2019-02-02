@@ -1,5 +1,9 @@
 export const DIMENSIONS = {
-  centerColumn: '40rem',
+  centerColumn: '35em',
+};
+
+export const MEDIA = {
+  mobile: '@media (max-width: 50em)',
 };
 
 export const PALETTE = {

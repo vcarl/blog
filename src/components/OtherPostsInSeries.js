@@ -11,7 +11,7 @@ import {
 } from '../basics/Text';
 
 const El = styled.div`
-  margin-top: 1rem;
+  margin-top: 1em;
 `;
 const NavEl = styled.div`
   display: flex;

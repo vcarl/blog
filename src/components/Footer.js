@@ -12,7 +12,7 @@ const El = styled(Container).attrs({ as: 'footer' })``;
 const ImageEl = styled(Image)`
   display: inline-block;
   margin: 0;
-  margin-right: 1rem;
+  margin-right: 1em;
 `;
 
 const social = [

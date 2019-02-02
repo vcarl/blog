@@ -9,7 +9,7 @@ const PostTitleEl = styled(Title)`
   margin-bottom: 0;
 `;
 const PostListEl = styled(Block)`
-  margin-left: 1rem;
+  margin-left: 1em;
 `;
 
 const PostSeries = ({ title, posts }) => (
