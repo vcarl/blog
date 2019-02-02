@@ -14,7 +14,7 @@ export const Paragraph = styled.p`
 export const Code = styled.pre`
   margin: 0;
   background: ${({ theme }) => theme.mutedBackground};
-  padding: 0.5rem;
+  padding: 0.5em;
   border: 1px solid ${({ theme }) => theme.mutedBorder};
   border-radius: 2px;
   line-height: 1.3;
@@ -42,22 +42,20 @@ export const Image = styled.img`
 `;
 export const List = styled.ul`
   line-height: 1.3;
+  padding-left: 2em;
 `;
 export const OrderedList = styled(List).attrs({ as: 'ol' })``;
 export const ListItem = styled.li``;
 export const Break = styled.hr`
-  max-width: 6rem;
-  margin: 3rem auto;
+  max-width: 6em;
+  margin: 3em auto;
 `;
 export const Quote = styled.blockquote`
-  padding-left: 1.5rem;
+  padding-left: 1.5em;
   border-left: 2px solid ${({ theme }) => theme.mutedBorder};
-  margin-top: 0;
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin: 0 0 0 1em;
   font-style: italic;
-  font-size: 1.1em;
-  float: left;
+  display: inline-block;
 `;
 
 const titleFont = "font-family: 'lato', 'arial', sans-serif";

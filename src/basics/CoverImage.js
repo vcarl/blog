@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Image } from './Text';
 
 const El = styled(Image)`
-  max-width: 80rem;
+  max-width: 80em;
   width: 100vw;
 `;
 

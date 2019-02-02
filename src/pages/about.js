@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { MEDIA } from '../constants/styles';
+
 import { Container } from '../basics/Layout';
 import {
   Image,
@@ -17,13 +19,13 @@ import profilePhoto from '../images/vcarl.jpg';
 import SEO from '../components/seo';
 
 const ImageEl = styled(Image)`
-  max-width: 20rem;
+  max-width: 20em;
   float: right;
-  margin-right: -5rem;
+  margin-right: -5em;
 
-  @media (max-width: 50rem) {
+  ${MEDIA.mobile} {
     max-width: 100%;
-    width: 15rem;
+    width: 15em;
     float: unset;
     margin-right: auto;
   }
