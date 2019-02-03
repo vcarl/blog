@@ -50,7 +50,7 @@ const Post = ({ data }) => {
         {allPosts.length > 0 && (
           <RelatedPosts
             allPosts={allPosts}
-            currentTags={frontmatter.tags.split(', ')}
+            currentTags={(frontmatter.tags || '').split(', ')}
           />
         )}
       </Container>
