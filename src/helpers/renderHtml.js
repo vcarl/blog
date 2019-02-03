@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { toId } from '../helpers/strings';
-import { getChildText, getSnippet } from '../helpers/htmlAst';
+import { getSnippet } from '../helpers/htmlAst';
 
 import {
   Article,
@@ -46,6 +46,13 @@ export const renderHtml = (ast, frontmatter) => (
 // reorder) and it takes care of the key warning. Don't @ me.
 let key = 0;
 
+const getLinkableProps = (id, props) => ({
+  ...props,
+  hasLink: true,
+  id: props.id ? `${props.id} ${id}` : id,
+});
+const getId = node => toId(getSnippet(node));
+
 const renderTree = nodes =>
   nodes.map(({ type, tagName, properties, children, value }) => {
     if (type === 'text') {
@@ -80,13 +87,9 @@ export const mapTagToComponent = (tagName, props, children) => {
       };
     }
     case 'p': {
-      const id = toId(getSnippet(children));
       return {
         tagName: Paragraph,
-        props: {
-          ...props,
-          id: props.id ? `${props.id} ${id}` : id,
-        },
+        props: getLinkableProps(getId(children), props),
       };
     }
     case 'strong':
@@ -100,40 +103,41 @@ export const mapTagToComponent = (tagName, props, children) => {
         props,
       };
     case 'h1': {
-      const id = toId(getChildText(children));
       return {
         tagName: Heading,
-        props: {
-          ...props,
-          id: props.id ? `${props.id} ${id}` : id,
-        },
+        props: getLinkableProps(getId(children), props),
       };
     }
-    case 'h2':
+    case 'h2': {
       return {
         tagName: Subheading,
-        props,
+        props: getLinkableProps(getId(children), props),
       };
-    case 'h3':
+    }
+    case 'h3': {
       return {
         tagName: H3,
-        props,
+        props: getLinkableProps(getId(children), props),
       };
-    case 'h4':
+    }
+    case 'h4': {
       return {
         tagName: H4,
-        props,
+        props: getLinkableProps(getId(children), props),
       };
-    case 'h5':
+    }
+    case 'h5': {
       return {
         tagName: H5,
-        props,
+        props: getLinkableProps(getId(children), props),
       };
-    case 'h6':
+    }
+    case 'h6': {
       return {
         tagName: H6,
-        props,
+        props: getLinkableProps(getId(children), props),
       };
+    }
     case 'img':
       return {
         tagName: Image,

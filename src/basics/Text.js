@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { BlankLink } from './Link';
 
-const linkableStyles = `
-  position: relative;
+const linkableStyles = ({ hasLink }) =>
+  hasLink &&
+  `position: relative;
   padding-left: 1em;
   margin-left: -1em;
 `;
@@ -23,9 +24,9 @@ const makeLinkable = Comp => {
       visibility: visible;
     }
   `;
-  return ({ id, children, ...props }) => (
-    <Comp id={id} {...props}>
-      <LinkableId href={`#${id}`}>¶</LinkableId>
+  return ({ id, children, hasLink, ...props }) => (
+    <Comp id={id} hasLink={hasLink} {...props}>
+      {hasLink && <LinkableId href={`#${id}`}>¶</LinkableId>}
       {children}
     </Comp>
   );
@@ -91,7 +92,6 @@ export const Quote = styled.blockquote`
 
 const titleStyles = `
   font-family: 'lato', 'arial', sans-serif;
-  ${linkableStyles}
 `;
 
 export const Title = styled.h1`
@@ -100,23 +100,17 @@ export const Title = styled.h1`
 export const Subtitle = styled.div`
   ${titleStyles};
 `;
-export const Heading = makeLinkable(styled.h2`
-  ${titleStyles};
-`);
-export const Subheading = makeLinkable(styled.h3`
-  ${titleStyles};
-`);
-export const H3 = makeLinkable(styled.h3`
-  ${titleStyles};
-`);
-export const H4 = makeLinkable(styled.h4`
-  ${titleStyles};
-`);
-export const H5 = makeLinkable(styled.h5`
-  ${titleStyles};
-`);
-export const H6 = makeLinkable(styled.h6`
-  ${titleStyles};
-`);
+
+const makeLinkableHeading = base =>
+  makeLinkable(styled[base]`
+    ${titleStyles};
+    ${linkableStyles}
+  `);
+export const Heading = makeLinkableHeading('h2');
+export const Subheading = makeLinkableHeading('h3');
+export const H3 = makeLinkableHeading('h3');
+export const H4 = makeLinkableHeading('h4');
+export const H5 = makeLinkableHeading('h5');
+export const H6 = makeLinkableHeading('h6');
 
 export const Iframe = styled.iframe``;
