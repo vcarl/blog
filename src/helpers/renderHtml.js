@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { toId } from '../helpers/strings';
+import { getChildText, getSnippet } from '../helpers/htmlAst';
+
 import {
   Article,
   Text,
@@ -76,11 +79,16 @@ export const mapTagToComponent = (tagName, props, children) => {
         props,
       };
     }
-    case 'p':
+    case 'p': {
+      const id = toId(getSnippet(children));
       return {
         tagName: Paragraph,
-        props,
+        props: {
+          ...props,
+          id: props.id ? `${props.id} ${id}` : id,
+        },
       };
+    }
     case 'strong':
       return {
         tagName: Bold,
@@ -91,11 +99,16 @@ export const mapTagToComponent = (tagName, props, children) => {
         tagName: Quote,
         props,
       };
-    case 'h1':
+    case 'h1': {
+      const id = toId(getChildText(children));
       return {
         tagName: Heading,
-        props,
+        props: {
+          ...props,
+          id: props.id ? `${props.id} ${id}` : id,
+        },
       };
+    }
     case 'h2':
       return {
         tagName: Subheading,

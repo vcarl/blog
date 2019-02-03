@@ -1,5 +1,35 @@
+import React from 'react';
 import styled from 'styled-components';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { BlankLink } from './Link';
+
+const linkableStyles = `
+  position: relative;
+  padding-left: 1em;
+  margin-left: -1em;
+`;
+
+const makeLinkable = Comp => {
+  const LinkableId = styled(BlankLink)`
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    font-size: 0.8em;
+    height: 100%;
+    opacity: 0.5;
+    padding: 0 0.25em;
+
+    ${Comp}:hover & {
+      visibility: visible;
+    }
+  `;
+  return ({ id, children, ...props }) => (
+    <Comp id={id} {...props}>
+      <LinkableId href={`#${id}`}>¶</LinkableId>
+      {children}
+    </Comp>
+  );
+};
 
 export const Article = styled.article``;
 export const Text = styled.span``;
@@ -8,9 +38,10 @@ export const Small = styled.small`
 `;
 export const Bold = styled.strong``;
 export const Block = styled.div``;
-export const Paragraph = styled.p`
+export const Paragraph = makeLinkable(styled.p`
   line-height: 1.5;
-`;
+  ${linkableStyles}
+`);
 export const Code = styled.pre`
   margin: 0;
   background: ${({ theme }) => theme.mutedBackground};
@@ -58,31 +89,34 @@ export const Quote = styled.blockquote`
   display: inline-block;
 `;
 
-const titleFont = "font-family: 'lato', 'arial', sans-serif";
+const titleStyles = `
+  font-family: 'lato', 'arial', sans-serif;
+  ${linkableStyles}
+`;
 
 export const Title = styled.h1`
-  ${titleFont};
+  ${titleStyles};
 `;
 export const Subtitle = styled.div`
-  ${titleFont};
+  ${titleStyles};
 `;
-export const Heading = styled.h2`
-  ${titleFont};
-`;
-export const Subheading = styled.h3`
-  ${titleFont};
-`;
-export const H3 = styled.h3`
-  ${titleFont};
-`;
-export const H4 = styled.h4`
-  ${titleFont};
-`;
-export const H5 = styled.h5`
-  ${titleFont};
-`;
-export const H6 = styled.h6`
-  ${titleFont};
-`;
+export const Heading = makeLinkable(styled.h2`
+  ${titleStyles};
+`);
+export const Subheading = makeLinkable(styled.h3`
+  ${titleStyles};
+`);
+export const H3 = makeLinkable(styled.h3`
+  ${titleStyles};
+`);
+export const H4 = makeLinkable(styled.h4`
+  ${titleStyles};
+`);
+export const H5 = makeLinkable(styled.h5`
+  ${titleStyles};
+`);
+export const H6 = makeLinkable(styled.h6`
+  ${titleStyles};
+`);
 
 export const Iframe = styled.iframe``;
