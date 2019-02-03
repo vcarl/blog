@@ -26,18 +26,6 @@ const OtherPostsInSeries = ({ currentId, posts }) => {
   return (
     <El>
       <Heading>{currentPost.frontmatter.series}</Heading>
-      <NavEl>
-        {previousPost ? (
-          <Link to={previousPost.fields.slug}>◀ Previous</Link>
-        ) : (
-          <div />
-        )}
-        {nextPost ? (
-          <Link to={nextPost.fields.slug}>Next ▶</Link>
-        ) : (
-          <div />
-        )}
-      </NavEl>
       <Subheading>
         <Small>Other posts in this series</Small>
       </Subheading>
@@ -54,6 +42,18 @@ const OtherPostsInSeries = ({ currentId, posts }) => {
           </ListItem>
         ))}
       </List>
+      <NavEl>
+        {previousPost ? (
+          <Link to={previousPost.fields.slug}>◀ Previous</Link>
+        ) : (
+          <div />
+        )}
+        {nextPost ? (
+          <Link to={nextPost.fields.slug}>Next ▶</Link>
+        ) : (
+          <div />
+        )}
+      </NavEl>
     </El>
   );
 };
