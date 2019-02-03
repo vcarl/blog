@@ -4,7 +4,7 @@ published: true
 description:
   An exploration of different ways to handle errors with JS promises and
   async/await, with the advantages and problems of each.
-tags: javascript, promises, node, error handling
+tags: javascript, node, error handling
 cover_image: https://thepracticaldev.s3.amazonaws.com/i/f8ps8piazdy6vovxg24i.jpg
 canonical_url: https://medium.com/p/handling-errors-with-async-await-and-promises-cd2fea534f08
 date: 2018-07-21

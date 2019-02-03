@@ -75,7 +75,9 @@ const IndexPage = ({ data }) => {
                   key={entry.fields.slug}
                   slug={entry.fields.slug}
                   {...entry.frontmatter}
-                />
+                >
+                  {entry.frontmatter.description}
+                </PostSnippet>
               );
             case 'series':
               return <PostSeries key={entry.title} {...entry} />;
@@ -109,7 +111,6 @@ export const query = graphql`
             slug
           }
           frontmatter {
-            published
             title
             description
             series

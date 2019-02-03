@@ -4,7 +4,7 @@ published: true
 description:
   Restricting parts of your app to different types of users can be
   difficult. Here's how you can do it maintainably and extensibly.
-tags: react, authorization, authentication
+tags: react, patterns
 canonical_url: https://hackernoon.com/role-based-authorization-in-react-c70bb7641db4
 date: 2017-01-20
 ---

@@ -6,7 +6,7 @@ description:
   questions for us?” This series will give you questions that will help
   you identify problem environments before you start working.
 series: Questions to ask your interviewer
-tags: career, jobs, interviews
+tags: career, interviews
 canonical_url: https://medium.com/@vcarl/questions-to-ask-your-interviewer-project-management-and-prioritization-69ac3aad3689
 date: 2018-06-07
 ---

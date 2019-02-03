@@ -12,15 +12,15 @@ import Layout from './layout';
 
 import '../components/syntax.css';
 import OtherPostsInSeries from './OtherPostsInSeries';
+import RelatedPosts from './RelatedPosts';
 
 const Post = ({ data }) => {
-  const {
-    htmlAst,
-    id,
-    fileAbsolutePath,
-    frontmatter,
-  } = data.markdownRemark;
+  const { htmlAst, id, fileAbsolutePath, frontmatter } = data.post;
   const path = fileAbsolutePath.split('src/')[1];
+  const allPosts = data.allPosts.edges.map(({ node }) => ({
+    ...node.fields,
+    ...node.frontmatter,
+  }));
   return (
     <Layout title={frontmatter.title}>
       {frontmatter.cover_image && (
@@ -41,10 +41,16 @@ const Post = ({ data }) => {
         >
           Edit on GitHub
         </TextLink>
-        {data.allMarkdownRemark && (
+        {data.postsInSeries && (
           <OtherPostsInSeries
             currentId={id}
-            posts={data.allMarkdownRemark.edges.map(({ node }) => node)}
+            posts={data.postsInSeries.edges.map(({ node }) => node)}
+          />
+        )}
+        {allPosts.length > 0 && (
+          <RelatedPosts
+            allPosts={allPosts}
+            currentTags={frontmatter.tags.split(', ')}
           />
         )}
       </Container>
@@ -56,7 +62,7 @@ export default Post;
 
 export const query = graphql`
   query($slug: String!, $series: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       htmlAst
       fileAbsolutePath
@@ -70,7 +76,7 @@ export const query = graphql`
         canonical_url
       }
     }
-    allMarkdownRemark(
+    postsInSeries: allMarkdownRemark(
       filter: { frontmatter: { series: { eq: $series } } }
       sort: { fields: frontmatter___date, order: ASC }
     ) {
@@ -83,6 +89,26 @@ export const query = graphql`
           }
           fields {
             slug
+          }
+        }
+      }
+    }
+    allPosts: allMarkdownRemark(
+      filter: { frontmatter: { series: { ne: $series } } }
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 10
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            tags
+            description
+            date(formatString: "YYYY-MM-DD")
+            ago: date(fromNow: true)
           }
         }
       }

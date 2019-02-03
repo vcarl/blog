@@ -6,7 +6,7 @@ description:
   want to begin debugging a process that is already running. Luckily
   node.js has a way to do so.
 
-tags: javascript, node, debugging
+tags: node, programming
 canonical_url: https://hackernoon.com/debugging-node-without-restarting-processes-bd5d5c98f200
 date: 2018-01-17
 ---

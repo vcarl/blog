@@ -5,7 +5,7 @@ description:
   The recent snafu with the Lerna project is a good opportunity to
   discuss our role in what we build, and what responsibilities we have
   in behaving ethically.
-tags: software engineering, ethics
+tags: ethics, programming
 cover_image: https://thepracticaldev.s3.amazonaws.com/i/5rbswyv0oirluis5fhiu.jpg
 date: 2018-09-03
 ---
