@@ -23,51 +23,9 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     background: ${({ theme }) => theme.background};
-  }
-
-  @font-face {
-    font-display: fallback;
-    font-family: charissil;
-    src: url("${charissilBoldWoff2}") format("woff2"),
-      url("${charissilBoldWoff}") format("woff");
-    font-weight: bold;
-    font-style: regular;
-  }
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: charissil;
-    src: url("${charissilBoldItalicWoff2}") format("woff2"),
-      url("${charissilBoldItalicWoff}") format("woff");
-    font-weight: bold;
-    font-style: italic;
-  }
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: charissil;
-    src: url("${charissilItalicWoff2}") format("woff2"),
-      url("${charissilItalicWoff}") format("woff");
-    font-weight: regular;
-    font-style: italic;
-  }
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: charissil;
-    src: url("${charissilRegularWoff2}") format("woff2"),
-      url("${charissilRegularWoff}") format("woff");
-    font-weight: regular;
-    font-style: regular;
-  }
-  }
-  @font-face {
-    font-display: fallback;
-    font-family: lato;
-    src: url("${latoWoff2}") format("woff2"),
-      url("${latoWoff}") format("woff");
-    font-weight: regular;
-    font-style: regular;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
   }
 
   ${styledNormalize}
@@ -87,15 +45,61 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
-    min-height: 100vh;
-    padding: 0;
-    margin: 0;
-  }
-
   twitter-widget {
     margin: auto;
   }
 `;
 
 export default GlobalStyles;
+
+export const SsrStyles = createGlobalStyle`
+@font-face {
+  font-display: swap;
+  font-family: charissil;
+  src:
+    url("${charissilBoldWoff2}") format("woff2"),
+    url("${charissilBoldWoff}") format("woff");
+  font-weight: bold;
+  font-style: regular;
+}
+}
+@font-face {
+  font-display: swap;
+  font-family: charissil;
+  src:
+    url("${charissilBoldItalicWoff2}") format("woff2"),
+    url("${charissilBoldItalicWoff}") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+}
+@font-face {
+  font-display: swap;
+  font-family: charissil;
+  src:
+    url("${charissilItalicWoff2}") format("woff2"),
+    url("${charissilItalicWoff}") format("woff");
+  font-weight: regular;
+  font-style: italic;
+}
+}
+@font-face {
+  font-display: swap;
+  font-family: charissil;
+  src:
+    url("${charissilRegularWoff2}") format("woff2"),
+    url("${charissilRegularWoff}") format("woff");
+  font-weight: regular;
+  font-style: regular;
+}
+}
+@font-face {
+  font-display: swap;
+  font-family: lato;
+  src:
+    url("${latoWoff2}") format("woff2"),
+    url("${latoWoff}") format("woff");
+  font-weight: regular;
+  font-style: regular;
+}
+`;

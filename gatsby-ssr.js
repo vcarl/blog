@@ -6,7 +6,13 @@
 import React from 'react';
 
 import Providers from './src/components/Providers';
+import { SsrStyles } from './src/basics/GlobalStyles';
 
 export const wrapRootElement = ({ element }) => (
-  <Providers>{element}</Providers>
+  <Providers>
+    <>
+      <SsrStyles />
+      {element}
+    </>
+  </Providers>
 );
