@@ -6,7 +6,7 @@ description:
   cause those failures? If you add checks “just to be safe” you may be
   writing overly defensive code.
 
-tags: javascript, node, error handling, fail fast
+tags: javascript, programming, error handling
 cover_image: https://cdn-images-1.medium.com/max/1600/1*1FzBa_mHElrOQiFoPPD8Fw.jpeg
 canonical_url: https://medium.com/@vcarl/overly-defensive-programming-e7a1b3d234c2
 date: 2018-02-16

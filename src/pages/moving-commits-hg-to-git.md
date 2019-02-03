@@ -4,7 +4,7 @@ published: true
 description:
   I converted our repo from Hg to Git while preserving history. I ran
   into some hitches, some of the tools failed outright.
-tags: git, mercurial, migration
+tags: programming
 date: 2017-01-17
 ---
 

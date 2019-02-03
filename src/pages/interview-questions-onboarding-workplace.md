@@ -6,7 +6,7 @@ description:
   questions for us?” This series will give you questions that will help
   you identify problem environments before you start working.
 series: Questions to ask your interviewer
-tags: career, jobs, interviews
+tags: career, interviews
 cover_image: https://cdn-images-1.medium.com/max/2600/0*MSOMPcoYJCi9c7Mm.
 canonical_url: https://medium.com/@vcarl/questions-to-ask-your-interviewer-82a26e67ce6c
 date: 2018-05-14
