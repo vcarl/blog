@@ -30,19 +30,15 @@ const IndexPage = ({ data }) => {
   // should be presented together.
   const posts = allPosts.filter(p => !p.series);
 
-  // Group stories. This gets kinda icky, but it transforms a list of posts
-  // through a couple steps. Group posts by series name, then map it to an array
-  // of series (pulling the date off the most recent post). It would probably be
-  // a little cleaner with lodash, `.pick` and `.groupBy` would help.
-  const series = Object.entries(
-    allPosts
-      .filter(p => p.series)
-      .reduce((accum, post) => {
-        let series = accum[post.series] || [];
-        accum[post.series] = [...series, post];
-        return accum;
-      }, {}),
-  ).map(([title, posts]) => {
+  const postsBySeries = allPosts
+    .filter(p => p.series)
+    .reduce((accum, post) => {
+      let series = accum[post.series] || [];
+      accum[post.series] = [...series, post];
+      return accum;
+    }, {});
+
+  const series = Object.entries(postsBySeries).map(([title, posts]) => {
     posts = posts.sort(dateComparator);
     const date = posts[0].date;
     return {
