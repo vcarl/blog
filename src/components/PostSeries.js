@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Block, Title, Small } from '../basics/Text';
+import { Block, Heading, Small } from '../basics/Text';
 
 import PostSnippet from './PostSnippet';
 
-const PostTitleEl = styled(Title)`
+const PostTitleEl = styled(Heading)`
   margin-bottom: 0;
 `;
 const PostListEl = styled(Block)`
