@@ -37,8 +37,8 @@ const Footer = () => (
   <El>
     <Block>
       {social.map(({ href, image, name }) => (
-        <TextLink key={name} href={href} alt={name}>
-          <ImageEl src={image} />
+        <TextLink key={name} href={href}>
+          <ImageEl src={image} alt={name} />
         </TextLink>
       ))}
     </Block>

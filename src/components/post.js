@@ -20,6 +20,7 @@ const Post = ({ data }) => {
   const allPosts = data.allPosts.edges.map(({ node }) => ({
     ...node.fields,
     ...node.frontmatter,
+    timeToRead: node.timeToRead,
   }));
   return (
     <Layout title={frontmatter.title}>
@@ -50,7 +51,7 @@ const Post = ({ data }) => {
         {allPosts.length > 0 && (
           <RelatedPosts
             allPosts={allPosts}
-            currentTags={frontmatter.tags.split(', ')}
+            currentTags={(frontmatter.tags || '').split(', ')}
           />
         )}
       </Container>
@@ -110,6 +111,7 @@ export const query = graphql`
             date(formatString: "YYYY-MM-DD")
             ago: date(fromNow: true)
           }
+          timeToRead
         }
       }
     }
