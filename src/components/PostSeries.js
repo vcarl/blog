@@ -20,11 +20,7 @@ const PostSeries = ({ title, posts }) => (
 
     <PostListEl>
       {posts.map(post => (
-        <PostSnippet
-          key={post.fields.slug}
-          slug={post.fields.slug}
-          {...post.frontmatter}
-        />
+        <PostSnippet key={post.slug} {...post} />
       ))}
     </PostListEl>
   </Block>
