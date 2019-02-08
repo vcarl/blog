@@ -10,6 +10,7 @@ import {
   Paragraph,
   Code,
   TextLink,
+  Italic,
   List,
   ListItem,
   Break,
@@ -100,6 +101,11 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'blockquote':
       return {
         tagName: Quote,
+        props,
+      };
+    case 'em':
+      return {
+        tagName: Italic,
         props,
       };
     case 'h1': {

@@ -37,6 +37,7 @@ export const Text = styled.span``;
 export const Small = styled.small`
   color: ${({ theme }) => theme.textMuted};
 `;
+export const Italic = styled.em``;
 export const Bold = styled.strong``;
 export const Block = styled.div``;
 export const Paragraph = makeLinkable(styled.p`
