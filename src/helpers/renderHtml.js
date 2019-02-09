@@ -33,11 +33,12 @@ import {
 // remark includes an "AST" of HTML, and I want to be able to use styled-
 // components with it. Thus, HTML tree renderer. Maps tagNames to a
 // styled-component, plus some quirks due to HTML validation.
-export const renderHtml = (ast, frontmatter) => (
+export const renderHtml = (ast, metadata) => (
   <Article>
-    <Title>{frontmatter.title}</Title>
-    {frontmatter.series && (
-      <Small>Part of a series: {frontmatter.series}</Small>
+    <Title>{metadata.title}</Title>
+    <Small>{metadata.date}</Small>{' '}
+    {metadata.series && (
+      <Small>Part of a series: {metadata.series}</Small>
     )}
     {renderTree(ast.children)}
   </Article>

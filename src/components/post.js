@@ -15,7 +15,13 @@ import OtherPostsInSeries from './OtherPostsInSeries';
 import RelatedPosts from './RelatedPosts';
 
 const Post = ({ data }) => {
-  const { htmlAst, id, fileAbsolutePath, frontmatter } = data.post;
+  const {
+    htmlAst,
+    id,
+    fileAbsolutePath,
+    frontmatter,
+    fields,
+  } = data.post;
   const path = fileAbsolutePath.split('src/')[1];
   const allPosts = data.allPosts.edges.map(({ node }) => ({
     ...node.fields,
@@ -35,7 +41,9 @@ const Post = ({ data }) => {
           .split(',')
           .map(s => s.trim())}
       />
-      <Container>{renderHtml(htmlAst, frontmatter)}</Container>
+      <Container>
+        {renderHtml(htmlAst, { ...frontmatter, ...fields })}
+      </Container>
       <Container>
         <TextLink
           href={`https://github.com/vcarl/blog/edit/master/src/${path}`}
@@ -71,6 +79,7 @@ export const query = graphql`
         title
         published
         description
+        date(formatString: "YYYY-MM-DD")
         tags
         cover_image
         series
