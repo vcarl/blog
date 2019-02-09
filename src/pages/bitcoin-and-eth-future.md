@@ -159,7 +159,7 @@ community of miners and supporters may make it impossible to include the
 large changes needed to make it competitive with more modern blockchain
 technologies.
 
-Ethereum’s problems are perhaps more fundamental and possibly harder to
+Ethereum’s problems are perhaps more fundamental and might be harder to
 fix. The premise of the technology is that anyone can write code for a
 global computer, but I struggle to see use cases that aren’t better
 served by a centralized system. This has borne out in the projects that
@@ -173,12 +173,6 @@ what was proselytized—a global equalizer, a means of transfer
 unrestricted by any one party—they have become just another type of
 investment for those with wealth to invest in. Neither Bitcoin or
 Ethereum have demonstrated that they’re well-suited to solve any of the
-world’s problems.
-
-> Cryptocurrencies have become self-serving, insular communities.
-
-I don’t believe that either of them fill a real need in the world, and
-now have ecosystems and communities that exist only to fill their own
-needs. There are cryptocurrencies and blockchain projects being built
-that I think have a real chance at solving problems, but not on these
-platforms.
+world’s problems. I don’t believe that either of them fill a real need
+in the world in their current state, and their ecosystems and
+communities work now only to fill their own needs.
