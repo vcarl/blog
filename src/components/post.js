@@ -95,7 +95,10 @@ export const query = graphql`
       }
     }
     allPosts: allMarkdownRemark(
-      filter: { frontmatter: { series: { ne: $series } } }
+      filter: {
+        frontmatter: { series: { ne: $series } }
+        fields: { slug: { ne: $slug } }
+      }
       sort: { fields: frontmatter___date, order: DESC }
       limit: 10
     ) {
