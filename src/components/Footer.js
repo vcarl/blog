@@ -7,6 +7,7 @@ import { TextLink, Paragraph, Block, Image } from '../basics/Text';
 import GitHubIcon from '../images/github.svg';
 import TwitterIcon from '../images/twitter.svg';
 import LinkedInIcon from '../images/linkedin.svg';
+import RssIcon from '../images/rss.svg';
 
 const El = styled(Container).attrs({ as: 'footer' })``;
 const ImageEl = styled(Image)`
@@ -30,6 +31,11 @@ const social = [
     href: 'https://www.linkedin.com/in/carl-vitullo-a7488728/',
     image: LinkedInIcon,
     name: 'LinkedIn',
+  },
+  {
+    href: '/rss.xml',
+    image: RssIcon,
+    name: 'RSS',
   },
 ];
 
