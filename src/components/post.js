@@ -42,7 +42,7 @@ const Post = ({ data }) => {
           .map(s => s.trim())}
       />
       <Container>
-        {renderHtml(htmlAst, { ...frontmatter, ...fields })}
+        {renderHtml(htmlAst, { ...frontmatter, ...fields, path })}
       </Container>
       <Container>
         <TextLink
@@ -80,6 +80,7 @@ export const query = graphql`
         published
         description
         date(formatString: "YYYY-MM-DD")
+        updated(formatString: "YYYY-MM-DD")
         tags
         cover_image
         series
