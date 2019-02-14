@@ -37,6 +37,19 @@ export const renderHtml = (ast, metadata) => (
   <Article>
     <Title>{metadata.title}</Title>
     <Small>{metadata.date}</Small>{' '}
+    {metadata.updated && (
+      <Small>
+        <Italic>
+          <TextLink
+            href={`https://github.com/vcarl/blog/blame/master/src/${
+              metadata.path
+            }`}
+          >
+            last updated {metadata.updated}
+          </TextLink>
+        </Italic>
+      </Small>
+    )}
     {metadata.series && (
       <Small>Part of a series: {metadata.series}</Small>
     )}

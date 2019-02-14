@@ -1,10 +1,16 @@
 ---
 title: The future of Bitcoin and Ethereum
 date: 2019-02-08
-description: The world of cryptocurrency has been gushing about Bitcoin and Ethereum for the past year or two, but what might the future hold for them?
+updated: 2019-02-13
+description:
+  The world has gushed over Bitcoin and Ethereum, but the future doesn’t
+  look so rosy.
 tags: cryptocurrency, future
-cover_image:
+cover_image: https://i.imgur.com/i56u3j8.jpg
 ---
+
+(Image credit:
+[Nicolas Tissot](https://unsplash.com/photos/Z2yEVIbH-XU))
 
 I’ve loosely followed cryptocurrency for almost a decade. In 2011, I
 briefly mined Bitcoin (and Litecoin, when it became clear that GPU
@@ -58,6 +64,17 @@ Square Cash. Ethereum is much better, but its 15 second block time means
 transactions usually settle in about 3 minutes. This is suitable (if a
 little slow) for a payments app, but far too long a wait if you’re
 checking out with a line.
+
+There are serious efforts to address this. The
+[lightning network](http://lightning.network/) is way for two parties to
+confidently settle numerous transactions off-chain, only bringing it
+back onto the chain once they've completed their transactions with each
+other. With enough individuals maintaining these payment channels, a
+payment could occur between 2 parties without a direct connection by
+making multiple "hops" where connections exist. The lightning network is
+currently operating in a limited capacity, and in the future it could
+extend to cross-chain payments—acting as a compatibility layer between
+different protocols.
 
 # Price volatility and new currencies
 
