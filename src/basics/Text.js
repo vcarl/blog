@@ -19,6 +19,7 @@ const makeLinkable = Comp => {
     height: 100%;
     opacity: 0.5;
     padding: 0 0.25em;
+    user-select: none;
 
     ${Comp}:hover & {
       visibility: visible;
