@@ -22,6 +22,7 @@ const ImageEl = styled(Image)`
   max-width: 20em;
   float: right;
   margin-right: -5em;
+  margin-left: 0.5em;
 
   ${MEDIA.mobile} {
     max-width: 100%;
