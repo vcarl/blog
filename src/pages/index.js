@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
@@ -8,7 +9,11 @@ import PostSnippet from '../components/PostSnippet';
 import PostSeries from '../components/PostSeries';
 
 import { Container } from '../basics/Layout';
-import { Paragraph } from '../basics/Text';
+import { Paragraph, Title, Heading, Small } from '../basics/Text';
+
+const SiteTitle = styled(Title)`
+  font-size: 1.8em;
+`;
 
 const dateComparator = (a, b) => new Date(b.date) - new Date(a.date);
 
@@ -60,6 +65,10 @@ const IndexPage = ({ data }) => {
           keywords={[`gatsby`, `application`, `react`]}
         />
 
+        <SiteTitle>{title}</SiteTitle>
+        <Small>
+          <Heading>Carl Vitullo</Heading>
+        </Small>
         <Paragraph>{description}</Paragraph>
         <PageNav />
         {allEntries.sort(dateComparator).map(entry => {
