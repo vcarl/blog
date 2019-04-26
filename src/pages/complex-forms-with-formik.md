@@ -19,23 +19,24 @@ validation—even with large forms with many different types of fields.
 I recently used Formik and Yup to implement the most complex form I've
 seen first-hand; a tool for constructing
 [Stellar transactions](https://www.stellar.org/developers/guides/concepts/transactions.html).
-Transactions on Stellar are composed of 3 main parts. There's the
-transaction body, 1 or more signatures, and up to 200
+(There's a demonstration video at the bottom of this post) Transactions
+on Stellar are composed of 3 main parts: the transaction body, 1 or more
+signatures, and up to 200
 [operations](https://www.stellar.org/developers/guides/concepts/operations.html),
-of which there are 12 different types with up to 10 properties. At a
-(very) high level, this form needed:
+of which there are 12 different types with between 1 and 10 properties.
+At a (very) high level, this form needed:
 
 - A main form for the transaction
 - Several signatures, each a plain string
 - Multiple operations, each a different complex object
 
-I also wanted to have the operations behave like a "sub-form," added to
-the transaction when a user presses enter. This meant I was looking at
-doing two patterns that I'd specifically struggled with in the past.
-I've found both sub-forms and an arbitrary number of inputs tricky to
-implement—with the complex schema of my arbitrary number of sub-forms, I
-was nervous. To my delight, I found Formik's included utilities vastly
-simplified the implementation.
+I also wanted to have the operations behave like a "sub-form," being
+added to the transaction when a user presses enter. This meant I was
+looking at doing two patterns that I'd specifically struggled with in
+the past. I've found both sub-forms and an arbitrary number of inputs
+tricky to implement—with the complex schema of my arbitrary number of
+sub-forms, I was nervous. To my delight, I found Formik's included
+utilities vastly simplified the implementation.
 
 # Creating a sub-form
 
@@ -62,9 +63,9 @@ button;
 Formik provides such an effective abstraction over HTML forms, though,
 that this problem became trivial to solve. Because Formik provides a
 `submitForm` function to the render callback, it's easy to imperatively
-trigger a form submission from outside the form. By change from a true
+trigger a form submission from outside the form. By changing from a true
 submit button to a regular button that submits on click, I can get the
-best of both worlds.
+behavior I want.
 
 ```js
 // To simplify, I've removed some of the normal wiring needed to make
@@ -110,9 +111,9 @@ I discovered several footguns in this naive implementation.
 
 I adjusted the behavior in 2 ways in response. I changed operations to
 display as text (rather than inputs) after being attached, with a button
-to change to an edit mode. I also blocked submission of the top-most
-form while a sub-form was being edited. These changes dramatically cut
-the number of errors I made while manually testing. I wanted to call out
+to change to an edit mode. I also blocked submission of the main form
+while a sub-form was being edited. These changes dramatically cut the
+number of errors I made while manually testing. I wanted to call out
 these problems specifically because they seemed like likely problems
 when following this pattern.
 
@@ -209,12 +210,19 @@ all values.
 
 Given the scope and constraints, it became clear to me that the
 individual forms should be generated from a schema. After some trial and
-error iteration, I found a pattern that worked quite well.
+error iteration, I found a pattern that worked quite well. I broke the
+problem down into 3 set of building blocks.
 
-I build the schema as an object, keyed by the operation name. Each
-operation has a display name and a `fields` object. Each field is
-defined as an object with 5 keys: a name, a function to render the
-input, a label, a placeholder, and a validation function (from Yup).
+- A schema describing the fields of each form.
+- A component for each field type.
+- A validation rule for each field type.
+
+I built the schema as an object, keyed by the operation name. Each
+operation has a display name, an `id` (identical to the object key), and
+a `fields` object. Each field is defined as an object with 5 properties:
+an input name, a function to render the input, a label, a placeholder,
+and a validation function (from Yup). Some fields also have a list of
+options.
 
 ```js
 const OperationsSchema = {
@@ -259,10 +267,26 @@ the amount of testing I felt necessary.
 
 Most field types are trivial, simple compositions of Formik helpers;
 only separated for easy of future exension or styling. The complex field
-types got unit tests to ensure their behavior. The rendering logic is
-trivial, simply mapping over the `selectedOperation.fields` and calling
-`render()`. The validation rules are easy to unit test, and follow Yup's
-conventions.
+types got unit tests to ensure their behavior. The rendering logic
+(below) is trivial, simply mapping over the `selectedOperation.fields`
+and calling `render()`. The validation rules are easy to unit test, and
+follow Yup's conventions.
+
+```js
+<form onSubmit={handleSubmit}>
+  <input type="hidden" name="name" value={operationType} />
+  {fields.map(({ render, name, options, label, placeholder }) =>
+    render({
+      key: name,
+      name,
+      label,
+      placeholder,
+      options,
+    }),
+  )}
+  <button type="submit">Save operation</button>
+</form>
+```
 
 I'm so confident in the way these blocks fit together, I didn't feel a
 need to write integration tests for the final forms—it would amount to
