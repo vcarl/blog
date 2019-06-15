@@ -104,7 +104,9 @@ export const query = graphql`
         description
       }
     }
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: { frontmatter: { published: { ne: false } } }
+    ) {
       edges {
         node {
           fields {
