@@ -85,11 +85,18 @@ export const Break = styled.hr`
   margin: 3em auto;
 `;
 export const Quote = styled.blockquote`
-  padding-left: 1.5em;
+  padding-left: 1.5rem;
   border-left: 2px solid ${({ theme }) => theme.mutedBorder};
   margin: 0 0 0 1em;
   font-style: italic;
   display: inline-block;
+
+  & p {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.25;
+    font-size: 0.9em;
+  }
 `;
 
 const titleStyles = `
@@ -115,4 +122,13 @@ export const H4 = makeLinkableHeading('h4');
 export const H5 = makeLinkableHeading('h5');
 export const H6 = makeLinkableHeading('h6');
 
+export const Inserted = styled.ins`
+  text-decoration: none;
+  color: #478400;
+  font-weight: bold;
+`;
+export const Deleted = styled.del`
+  position: relative;
+  color: #f00;
+`;
 export const Iframe = styled.iframe``;

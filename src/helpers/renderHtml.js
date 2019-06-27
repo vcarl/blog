@@ -28,6 +28,8 @@ import {
   Block,
   Iframe,
   OrderedList,
+  Deleted,
+  Inserted,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
@@ -218,6 +220,16 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'iframe':
       return {
         tagName: Iframe,
+        props,
+      };
+    case 'del':
+      return {
+        tagName: Deleted,
+        props,
+      };
+    case 'ins':
+      return {
+        tagName: Inserted,
         props,
       };
     default:
