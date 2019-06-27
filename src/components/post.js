@@ -34,6 +34,7 @@ const Post = ({ data }) => {
         <CoverImage src={frontmatter.cover_image} />
       )}
       <SEO
+        description={frontmatter.description}
         image={frontmatter.cover_image}
         canonicalUrl={frontmatter.canonical_url}
         title={frontmatter.title}
