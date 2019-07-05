@@ -4,7 +4,7 @@ description:
   Wayfair employees walked out this week after learning that their
   employer sold beds that would be used in concentration camps. Here's
   how they turned anger into action.
-date: "2019-06-28"
+date: "2019-07-05"
 tags: career, organizing
 cover_image:
 ---
