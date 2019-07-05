@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { toId } from '../helpers/strings';
 import { getSnippet } from '../helpers/htmlAst';
@@ -220,6 +221,11 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'iframe':
       return {
         tagName: Iframe,
+        props,
+      };
+    case 'script':
+      return {
+        tagName: styled.script``,
         props,
       };
     case 'del':
