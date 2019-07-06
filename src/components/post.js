@@ -21,6 +21,7 @@ const Post = ({ data }) => {
     fileAbsolutePath,
     frontmatter,
     fields,
+    timeToRead,
   } = data.post;
   const path = fileAbsolutePath.split('src/')[1];
   const allPosts = data.allPosts.edges.map(({ node }) => ({
@@ -43,7 +44,12 @@ const Post = ({ data }) => {
           .map(s => s.trim())}
       />
       <Container>
-        {renderHtml(htmlAst, { ...frontmatter, ...fields, path })}
+        {renderHtml(htmlAst, {
+          ...frontmatter,
+          ...fields,
+          timeToRead,
+          path,
+        })}
       </Container>
       <Container>
         <TextLink
@@ -76,6 +82,7 @@ export const query = graphql`
       id
       htmlAst
       fileAbsolutePath
+      timeToRead
       frontmatter {
         title
         published

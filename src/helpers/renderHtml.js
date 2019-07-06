@@ -38,24 +38,30 @@ import {
 // styled-component, plus some quirks due to HTML validation.
 export const renderHtml = (ast, metadata) => (
   <Article>
-    <Title>{metadata.title}</Title>
-    <Small>{metadata.date}</Small>{' '}
-    {metadata.updated && (
+    <header>
+      <Title>{metadata.title}</Title>
+      <Paragraph>
+        <Italic>{metadata.description}</Italic>
+      </Paragraph>
       <Small>
-        <Italic>
-          <TextLink
-            href={`https://github.com/vcarl/blog/blame/master/src/${
-              metadata.path
-            }`}
-          >
-            last updated {metadata.updated}
-          </TextLink>
-        </Italic>
-      </Small>
-    )}
-    {metadata.series && (
-      <Small>Part of a series: {metadata.series}</Small>
-    )}
+        Posted <time datetime={metadata.date}>{metadata.date}</time>
+        {metadata.updated && (
+          <Italic>
+            <TextLink
+              href={`https://github.com/vcarl/blog/blame/master/src/${
+                metadata.path
+              }`}
+            >
+              , last updated {metadata.updated}
+            </TextLink>
+          </Italic>
+        )}
+        {metadata.timeToRead && `, ${metadata.timeToRead} minute read.`}
+      </Small>{' '}
+      {metadata.series && (
+        <Small>Part of a series: {metadata.series}</Small>
+      )}
+    </header>
     {renderTree(ast.children)}
   </Article>
 );
