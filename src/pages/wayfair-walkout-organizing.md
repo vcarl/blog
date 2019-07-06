@@ -57,7 +57,7 @@ Later that day, it became a national issue with
 [AOC](https://twitter.com/AOC/status/1143590995122171905) and
 [Bernie Sanders](https://twitter.com/BernieSanders/status/1143610481854300161)
 tweeting in support of it. After news of the walkout breaks, management
-shifts thir position to
+shifts their position to
 [donating \$100k](https://www.cnn.com/2019/06/26/business/wayfair-donation-migrant-facility/index.html)
 to the Red Cross—not to [RAICES](https://www.raicestexas.org), an
 immigrant rights group, as proposed by the organizers.
@@ -215,6 +215,7 @@ yet:
 
 [Management's response](https://twitter.com/FizFashizzle/status/1143530739541139457),
 delivered the next day, is a flat no.
+([Mirror](/images/wayfair-response.jpg), in case the tweet is removed)
 
 Thus the walkout. It offers a good reminder: It's not enough to complain
 if your company is doing something that you and your colleagues feel is
