@@ -21,13 +21,17 @@ const makeLinkable = Comp => {
     padding: 0 0.25em;
     user-select: none;
 
+    &:before {
+      content: '¶';
+    }
+
     ${Comp}:hover & {
       visibility: visible;
     }
   `;
   return ({ id, children, hasLink, ...props }) => (
     <Comp id={id} hasLink={hasLink} {...props}>
-      {hasLink && <LinkableId href={`#${id}`}>¶</LinkableId>}
+      {hasLink && <LinkableId href={`#${id}`} />}
       {children}
     </Comp>
   );
