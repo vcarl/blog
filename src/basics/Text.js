@@ -120,6 +120,7 @@ export const Subheading = makeLinkableHeading('h3');
 export const H3 = makeLinkableHeading('h4');
 export const H4 = makeLinkableHeading('h5');
 export const H5 = makeLinkableHeading('h6');
+export const H6 = makeLinkableHeading('h6');
 
 export const Inserted = styled.ins`
   text-decoration: none;
