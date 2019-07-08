@@ -21,6 +21,7 @@ const Post = ({ data }) => {
     fileAbsolutePath,
     frontmatter,
     fields,
+    timeToRead,
   } = data.post;
   const path = fileAbsolutePath.split('src/')[1];
   const allPosts = data.allPosts.edges.map(({ node }) => ({
@@ -34,6 +35,7 @@ const Post = ({ data }) => {
         <CoverImage src={frontmatter.cover_image} />
       )}
       <SEO
+        description={frontmatter.description}
         image={frontmatter.cover_image}
         canonicalUrl={frontmatter.canonical_url}
         title={frontmatter.title}
@@ -42,7 +44,12 @@ const Post = ({ data }) => {
           .map(s => s.trim())}
       />
       <Container>
-        {renderHtml(htmlAst, { ...frontmatter, ...fields, path })}
+        {renderHtml(htmlAst, {
+          ...frontmatter,
+          ...fields,
+          timeToRead,
+          path,
+        })}
       </Container>
       <Container>
         <TextLink
@@ -75,6 +82,7 @@ export const query = graphql`
       id
       htmlAst
       fileAbsolutePath
+      timeToRead
       frontmatter {
         title
         published

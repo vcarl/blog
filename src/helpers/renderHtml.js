@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { toId } from '../helpers/strings';
 import { getSnippet } from '../helpers/htmlAst';
@@ -28,6 +29,8 @@ import {
   Block,
   Iframe,
   OrderedList,
+  Deleted,
+  Inserted,
 } from '../basics/Text';
 
 // remark includes an "AST" of HTML, and I want to be able to use styled-
@@ -35,24 +38,30 @@ import {
 // styled-component, plus some quirks due to HTML validation.
 export const renderHtml = (ast, metadata) => (
   <Article>
-    <Title>{metadata.title}</Title>
-    <Small>{metadata.date}</Small>{' '}
-    {metadata.updated && (
+    <header>
+      <Title>{metadata.title}</Title>
+      <Paragraph>
+        <Italic>{metadata.description}</Italic>
+      </Paragraph>
       <Small>
-        <Italic>
-          <TextLink
-            href={`https://github.com/vcarl/blog/blame/master/src/${
-              metadata.path
-            }`}
-          >
-            last updated {metadata.updated}
-          </TextLink>
-        </Italic>
-      </Small>
-    )}
-    {metadata.series && (
-      <Small>Part of a series: {metadata.series}</Small>
-    )}
+        Posted <time datetime={metadata.date}>{metadata.date}</time>
+        {metadata.updated && (
+          <Italic>
+            <TextLink
+              href={`https://github.com/vcarl/blog/blame/master/src/${
+                metadata.path
+              }`}
+            >
+              , last updated {metadata.updated}
+            </TextLink>
+          </Italic>
+        )}
+        {metadata.timeToRead && `, ${metadata.timeToRead} minute read.`}
+      </Small>{' '}
+      {metadata.series && (
+        <Small>Part of a series: {metadata.series}</Small>
+      )}
+    </header>
     {renderTree(ast.children)}
   </Article>
 );
@@ -218,6 +227,21 @@ export const mapTagToComponent = (tagName, props, children) => {
     case 'iframe':
       return {
         tagName: Iframe,
+        props,
+      };
+    case 'script':
+      return {
+        tagName: styled.script``,
+        props,
+      };
+    case 'del':
+      return {
+        tagName: Deleted,
+        props,
+      };
+    case 'ins':
+      return {
+        tagName: Inserted,
         props,
       };
     default:
