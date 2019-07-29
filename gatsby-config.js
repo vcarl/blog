@@ -7,6 +7,7 @@ module.exports = {
     siteUrl: 'https://blog.vcarl.com',
   },
   plugins: [
+    'gatsby-plugin-netlify',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
