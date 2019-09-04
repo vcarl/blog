@@ -15,15 +15,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 };
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage, createRedirect } = actions;
-
-  // Redirect to Medium post to preserve exclusivity agreement
-  createRedirect({
-    fromPath: '/role-based-authorization-react/',
-    toPath:
-      'https://medium.com/better-programming/role-based-authorization-in-react-c70bb7641db4',
-    isPermanent: false,
-  });
+  const { createPage } = actions;
 
   return graphql(`
     {
