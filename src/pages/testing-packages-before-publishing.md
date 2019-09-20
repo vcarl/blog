@@ -1,8 +1,7 @@
 ---
 title: Testing npm packages before publishing
 published: true
-description:
-  Some problems with using npm link to test packages, and what I do
+description: Some problems with using npm link to test packages, and what I do
   instead.
 tags: npm, javascript, node, beginners
 cover_image: https://thepracticaldev.s3.amazonaws.com/i/h2jkprv93z4c7b3kqchu.jpg
@@ -83,7 +82,9 @@ Once you have the file, you can install it. `npm install` can install
 from a lot more sources than just npm, and I highly suggest
 [skimming through the docs](https://docs.npmjs.com/cli/install). We have
 to specify the full path to the file, so I usually copy it to my home
-directory first for convenience.
+directory first for convenience. Update: Since originally writing this,
+I've been informed about [`yalc`](https://www.npmjs.com/package/yalc),
+a tool to automate the worflow I describe here.
 
 ```sh
 ~/workspace/package-name $ npm pack
