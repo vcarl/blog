@@ -16,106 +16,78 @@ Formik is a wonderful library. When combined with the Yup validation
 library, it becomes almost trivial to handle touched inputs and
 validation—even with large forms with many different types of fields.
 
-I recently used Formik and Yup to implement the most complex form I've
-seen first-hand; a tool for constructing
-[Stellar transactions](https://www.stellar.org/developers/guides/concepts/transactions.html).
-(There's a demonstration video at the bottom of this post) Transactions
-on Stellar are composed of 3 main parts: the transaction body, 1 or more
-signatures, and up to 200
-[operations](https://www.stellar.org/developers/guides/concepts/operations.html),
-of which there are 12 different types with between 1 and 10 properties.
-At a (very) high level, this form needed:
+I used Formik and Yup for a particularly complex form. It needed 1 form
+to input some metadata about a transaction, and a sub-form of one of 12
+different varieties—called an "operation" here. The backend for this
+system accepts up to 200 operations per transaction, so this form needed
+to reflect that.
 
-- A main form for the transaction
-- Several signatures, each a plain string
-- Multiple operations, each a different complex object
-
-I also wanted to have the operations behave like a "sub-form," being
-added to the transaction when a user presses enter. This meant I was
-looking at doing two patterns that I'd specifically struggled with in
-the past. I've found both sub-forms and an arbitrary number of inputs
-tricky to implement—with the complex schema of my arbitrary number of
-sub-forms, I was nervous. To my delight, I found Formik's included
-utilities vastly simplified the implementation.
+Some additional constraints I was working under: over the next several
+years, it's likely that the validation rules will need to be adjusted an
+updated, so another design goal was ease of maintenance in that regard.
 
 # Creating a sub-form
 
 The fundamental problem with a sub-form is that HTML doesn't allow
 `<form>` to appear within another `<form>` node. I wanted my transaction
 form to contain the operation forms before the 'Submit transaction'
-button;
+button.
 
-```
-+------------------------+
-| [ source ]             |
-| [ memo ]               |
-|                        |
-| { operation form 1 }   |
-| { operation form 2 }   |
-|                        |
-| { signer form 1 }      |
-| { signer form 2 }      |
-|                        |
-| < submit transaction > |
-+------------------------+
-```
-
-Formik provides such an effective abstraction over HTML forms, though,
-that this problem became trivial to solve. Because Formik provides a
-`submitForm` function to the render callback, it's easy to imperatively
-trigger a form submission from outside the form. By changing from a true
-submit button to a regular button that submits on click, I can get the
-behavior I want.
+Formik provides a `submitForm` function
+[as part of the "Formik bag"](https://jaredpalmer.com/formik/docs/api/formik#formik-render-methods-and-props),
+which let's us imperatively trigger a form submission from outside the
+form. By changing from a true submit button to a regular button that
+submits on click, I can get the behavior I want.
 
 ```js
-// To simplify, I've removed some of the normal wiring needed to make
-//this a working example.
 () => (
   <Formik
     // initialValues etc
-    render={({ submitForm }) => (
+    render={({ submitForm, ...props }) => (
       <>
-        <form>
-          <input name="source" />
-          <input name="memo" />
-        </form>
-        <form>
-          <input name="operation 1" />
-        </form>
-        <form>
-          <input name="operation 2" />
-        </form>
-        <form>
-          <input name="signature 1" />
-        </form>
-        <form>
-          <input name="signature 2" />
-        </form>
-        <button onClick={submitForm}>Submit transaction</button>
+        <TransactionForm {...props} />
+        <OperationForm {...props} />
+        <button onClick={submitForm}>Submit</button>
       </>
     )}
   />
 );
 ```
 
-With this, I got the behavior I was seeking. On the page it appears as a
-single form, submitted as a single unit once it's completed. Each
-operation, meanwhile, can be attached to the transaction itself when its
-portion of the form is submitted.
+I modelled this with Yup with `OperationForm` as an object array.
+Because I wanted to make it easy to change the operation forms, I built
+these as an object.
 
-I discovered several footguns in this naive implementation.
+```js
+const formSchema = {
+  input: {
+    id: 'input',
+    label: 'string',
+    fields: [
+      {
+        name: 'string',
+        render: props => <Input {...props} />,
+        placeholder: 'string',
+        default: 'input value',
+        validation: yup.string('Any yup rule'),
+      },
+    ],
+  },
+  // …
+};
+```
 
-- Difficult to tell when an operation had been attached to the
-  transaction.
-- Easy to submit a transaction before attaching the last operation.
+I found this let me build up a catalog of useful input components and
+validation rules, letting me express the full range of form values. By
+building custom yup validators for data structures specific to this
+service, I'm confident I'll be able to keep this up-to-date with minimal
+effort as changes occur.
 
-I adjusted the behavior in 2 ways in response. I changed operations to
-display as text (rather than inputs) after being attached, with a button
-to change to an edit mode. I also blocked submission of the main form
-while a sub-form was being edited. These changes dramatically cut the
-number of errors I made while manually testing. I wanted to call out
-these problems specifically because they seemed like likely problems
-when following this pattern.
+There are 2 parts to rendering this: gathering up validation rules, and
+rendering the inputs. I wrote a helper function to extract the input
+name and validation rule to build a yup schema, putting it on a `ref` in
+my form component. With my `render` function, I can return
+`fields.map(({render}) => render())`
 
 # Lists of inputs
 
@@ -127,47 +99,46 @@ removing existing elements all add logic.
 Formik, luckily, provides a utility specifically to help in this case;
 `FieldArray`. It provides
 [a number of typical array methods](https://jaredpalmer.com/formik/docs/api/fieldarray#fieldarray-helpers),
-which made it trivial to handle this situation that I had previously
-found so frustrating.
+which went a long way in helping with this situation that I had
+previously found so frustrating.
+
+I found I could get away with only using `push` and `remove`. Formik
+understands dot notation in input names, so it can automatically wire up
+`Field`s if you provide the name.
 
 ```js
 <FieldArray
-  name="signers"
-  render={({ push, remove, replace }) => (
-    <form>
-      {values.signers.map((signer, i) => (
+  name="someArrayField"
+  render={({ push, remove }) => (
+    <>
+      {values.someArrayField.map((signer, i) => (
         <>
-          <input
-            key={i}
-            // Replace this value on change.
-            onChange={e => replace(i, e.target.value)}
-            // Formik is smart enough to understand indexes in input names.
-            name={`signers.${i}`}
-            value={signer}
-          />
+          <input key={i} name={`someArrayField.${i}`} />
           <button type="button" onClick={() => remove(i)}>
             Remove
           </button>
         </>
       ))}
       <button type="button" onClick={() => push('')}>
-        Add signer
+        Add new
       </button>
-    </form>
+    </>
   )}
 />
 ```
 
-There are many other array utilities, but these three simple ones were
-sufficient for my needs. My final code grew much more complex as I
-fine-tuned the UX I wanted to offer the user (largely discovered through
-mistakes I found myself making), but the core of it is quite simple.
+The only struggle I had here, really, was how to present the add and
+remove interactions to the user. Formik made it so easy for me to
+implement the basic functionality that I had some extra time and
+motivation to play with different experiences.
 
 # Lists of many different complex inputs
 
-Happily, Formik provides such fantastic handling of input names when
-determining changes, I found no additional complexity when the lists
-were made of complex objects.
+Formik provides such fantastic handling of input names when determining
+changes, I found no additional complexity when the lists were made of
+complex objects, as in the case of the operations sub-forms. In the real
+app, each of these form bodies were constructed from the object
+described above.
 
 ```js
 <FieldArray
@@ -176,20 +147,8 @@ were made of complex objects.
     <form>
       {values.operations.map((operation, i) => (
         <>
-          <input
-            key={i}
-            onChange={e => replace(i, e.target.value)}
-            // field1
-            name={`operations.${i}.field1`}
-            value={operation}
-          />
-          <input
-            key={i}
-            onChange={e => replace(i, e.target.value)}
-            // field2
-            name={`operations.${i}.field2`}
-            value={operation}
-          />
+          <input key={i} name={`operations.${i}.field1`} />
+          <input key={i} name={`operations.${i}.field2`} />
         </>
       ))}
       <button type="button" onClick={() => push('')}>
