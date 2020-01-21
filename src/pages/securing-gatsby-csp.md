@@ -1,6 +1,6 @@
 ---
 title: Securing a large Gatsby site with a CSP
-date: 2020-01-18
+date: 2020-01-21
 updated:
 description:
   Content security policies are a great way to lock down your website,
@@ -24,10 +24,10 @@ loaded from, what external connections can be made, and what types of
 code can be run. It's a way to lock down the wild-west execution
 environments that are the browsers of the general public by removing
 certain attack vectors. I learned that CSPs are difficult to get right,
-but they can be rolled out extremely safely.
+but new policies can be rolled out safely.
 
-CSP rules are extremely granular, and the rules for writing them are
-tricky. Because of how various browsers and common tools work, I
+CSP rules are granular to the extreme, and the rules for writing them
+are tricky. Because of how various browsers and common tools work, I
 discovered that there were many violations I didn't expect, that are
 difficult to verify, and that there might be new errors at any time.
 Because CSPs are a whitelist, I had to learn a lot about the details in
@@ -58,14 +58,14 @@ compromised before malicious scripts can be executed.
 However, Gatsby itself places many inline styles and scripts on the
 page, and MDX uses `new Function`. Because they make use of this
 functionality, we have to punch pretty big hole in the security policy.
-On the one hand, this is pretty great: there's only 1 problem, it's
+On the one hand, this is pretty great: there are very few problems, it's
 really really close to letting us be extremely restrictive with our
-security rules. On the other hand, _there's just 1 problem_: so close,
-yet so far. I can't lock the policy all the way down.
+security rules. On the other hand, _there are so few problems_: so
+close, yet so far. I can't lock the policy all the way down.
 
 Gatsby has
 [an umbrella issue](https://github.com/gatsbyjs/gatsby/issues/10890) for
-the issues, and there's
+these problems, and there's
 [a workaround for MDX](https://github.com/ChristopherBiscardi/gatsby-mdx/issues/303#issuecomment-469095503)
 (with some restrictions on how you can write your code). There's also
 [`gatsby-plugin-csp`](https://github.com/bejamas/gatsby-plugin-csp),
@@ -97,8 +97,8 @@ appear.
 Very fortuitously, one of my good friends published a CSP evaluation
 tool, [csper.io](https://csper.io/#/evaluator), which helped me catch a
 number of silly mistakes that accidentally weakened my policy. CSPs have
-an extremely fiddly syntax, and because they only warn when the rule is
-violated, broken rules can be invisible.
+an fiddly syntax, and because they only warn when the rule is violated,
+broken rules can be invisible.
 
 ```diff
 -base-uri none;
@@ -122,9 +122,9 @@ block-all-mixed-content;
 base-uri 'none';
 default-src 'self';
 object-src 'none';
+frame-ancestors 'self';
 
 form-action https://company-name.us9.list-manage.com;
-frame-ancestors 'self';
 
 img-src data: https: android-webview-video-poster: android-webview:;
 
