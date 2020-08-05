@@ -168,7 +168,7 @@ RUN yarn build
 # execution of nginx is omitted here.
 ```
 
-The above dockerfile produces an image that's 2.21GB. I can mke this a
+The above dockerfile produces an image that's 2.21GB. I can make this a
 multi-stage build by naming our "build" image and using a second `FROM`.
 
 ```dockerfile
@@ -207,5 +207,5 @@ I've repeated this process on a number applications I've maintained, and
 it's paid dividends in time saved every time. Time spent waiting for a
 build is waste time. It breaks me out of my flow, I get distracted and
 don't notice when it finally finishes, and it makes it so slow to test
-changes that I don't want to experiment. Optimizatios such as these are
+changes that I don't want to experiment. Optimizations such as these are
 substantial wins to my productivity.
