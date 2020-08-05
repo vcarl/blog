@@ -1,50 +1,50 @@
 ---
 title: Optimizing a dockerfile
----
+published: true
+description: >
+  There are 3 major points to consider when optimizing a Docker file:
+  Build context size, cached layers, and final image size.
 
-One of my pet peeves when working with a dockerized application is when
-I have to frequently rebuild the image, but it hasn't been set up in a
-way to take advantage of Docker's excellent caching.
+tags: docker, programming, optimizing
+cover_image:
+date: 2020-08-05
+---
 
 There are 3 major points to consider when optimizing a Docker file:
 
-- Loading context
-- Caching during rebuilds
+- Build context size
+- Cached layers
 - Final image size
 
-## Loading context
+## Build context size
 
-The first line of output after starting a docker build reads
-
-> `Sending build context to Docker daemon`
-
-With a count of how much data is being copied over. This represents the
-entirety of the disk contents for the folder containing your Dockerfile,
-except parts ignored by `.dockerignore`. This can be massive — on a
-Javascript application, this may mean copying over `node_modules`, which
-would be installed as part of the build anyway!
+The build context is the entirety of the disk contents for the folder
+containing your Dockerfile, except parts ignored by `.dockerignore`.
+This can be massive — on a Javascript application, this means copying
+over `node_modules`, which would be installed as part of the build
+anyway!
 
 On a real world example, failing to add `node_modules` to my
 `.dockerignore` file yields:
 
 `Sending build context to Docker daemon 788.6MB`
 
-At a rate of about 30-50MB/s. A significant wait! _Just_ ignoring
-`node_modules` reduces that to
+That context transfers at about 30-50MB/s. A significant wait! _Just_
+ignoring `node_modules` reduces that to:
 
 `Sending build context to Docker daemon 13.75MB`
 
 Which is no wait at all. This alone is an easy win that can save minutes
 per build if not already configured.
 
-## Caching rebuilds
+## Cached layers
 
 Each step in a Dockerfile produces a "layer," which is cached across
 subsequent runs. The rules for when caches are invalidate are pretty
 simple:
 
 - The line of the Dockerfile is changed
-- The resources referenced by an `ADD` or `COPY` instruction change
+- The resources referenced by `ADD` or `COPY` change
 - Any line above the current one has been invalidated
 
 This means that we can dramatically reduce the amount of time it takes
@@ -120,7 +120,7 @@ Consider how long each of these steps takes. I find `apt-get` and
 minutes, _each_, and both are completely irrelevant if I'm only making a
 change to source code.
 
-### Final image size
+## Final image size
 
 The final docker image is, presumably, the artifact that is being
 produced and passed throughout the rest of the deployment. These may be
@@ -131,20 +131,20 @@ advantageous. Some context first:
 The real-world Dockerfile I've been referencing is a single-page
 application, and thus is served by nginx. A straightforward way to
 configure a docker image for this would be to start `FROM nginx`,
-install node, yarn, and all the other tools needed to build it.
+install node, yarn, and all the other tools needed to build it, then
+copy the resulting files to nginx's content root.
 
 However this leads to an inefficiency: node, yarn, even my
-`node_modules`, _aren't used by the final image_. It's compiiled into
-static html, js, and css. The rest of those tools and resources are now
-wasted space. Worse, it's a potential security risk! The running server,
-rather than only having exactly what it needs to execute the production
-environment, has multiple tools for installing and running external
-code. (I'll admit to not knowing a precise exploit — security isn't my
-specialization — but excluding unnecessary tools reduces the attack
-surface)
+`node_modules`, _aren't used by nginx_. It's compiled into static html,
+js, and css. The rest of those tools and resources are now wasted space.
+Worse, it's a potential security risk! The running server, rather than
+only having exactly what it needs to execute the production environment,
+has multiple tools for installing and running external code. (I'll admit
+to not knowing a precise exploit — security isn't my specialization —
+but excluding unnecessary tools reduces the attack surface)
 
 Docker lets us address that with a feature known as "multi-stage
-builds". We can name intermediate images used to run our build, then
+builds." We can name intermediate images used to run our build, then
 extract resources for consumption in a later (more narrowly scoped)
 image.
 
@@ -163,7 +163,7 @@ COPY src /app/src/src
 
 RUN yarn build
 
-# I'm cheating a bit. These two images aren't _identical_ because I
+# I’m cheating a bit. These two images aren’t _identical_ because I
 # don't have a working example of nginx handy. The installation and
 # execution of nginx is omitted here.
 ```
