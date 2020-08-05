@@ -16,7 +16,7 @@ There are 3 major points to consider when optimizing a Docker file:
 - Cached layers
 - Final image size
 
-## Build context size
+# Build context size
 
 The build context is the entirety of the disk contents for the folder
 containing your Dockerfile, except parts ignored by `.dockerignore`.
@@ -37,7 +37,7 @@ ignoring `node_modules` reduces that to:
 Which is no wait at all. This alone is an easy win that can save minutes
 per build if not already configured.
 
-## Cached layers
+# Cached layers
 
 Each step in a Dockerfile produces a "layer," which is cached across
 subsequent runs. The rules for when caches are invalidate are pretty
@@ -50,7 +50,7 @@ simple:
 This means that we can dramatically reduce the amount of time it takes
 to re-build a docker image by approaching our Dockerfile with some care.
 
-### Order commands from least- to most-frequently-changed
+## Order commands from least- to most-frequently-changed
 
 We can maximize the amount of layers that remain cached by placing
 frequently changed resources or instructions later in the file. This is
@@ -59,7 +59,7 @@ operations. You can't install your dependencies before copying a
 manifest, and you can't build your source before installing your
 dependencies.
 
-### Un-bundle unrelated instructions
+## Un-bundle unrelated instructions
 
 Instead of configuring the OS, installing the dependencies, and building
 the application in a single step, separate these into discrete steps.
@@ -120,7 +120,7 @@ Consider how long each of these steps takes. I find `apt-get` and
 minutes, _each_, and both are completely irrelevant if I'm only making a
 change to source code.
 
-## Final image size
+# Final image size
 
 The final docker image is, presumably, the artifact that is being
 produced and passed throughout the rest of the deployment. These may be
