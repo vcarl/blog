@@ -57,7 +57,7 @@ const Post = ({ data }) => {
         >
           Edit on GitHub
         </TextLink>
-        {data.postsInSeries && (
+        {data.postsInSeries.edges.length > 0 && (
           <OtherPostsInSeries
             currentId={id}
             posts={data.postsInSeries.edges.map(({ node }) => node)}

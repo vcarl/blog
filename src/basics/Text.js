@@ -65,6 +65,7 @@ export const InlineCode = styled.span`
   border-radius: 2px;
   line-height: 1.2;
   font-family: monospace;
+  font-size: 0.85em;
 `;
 export const TextLink = styled(OutboundLink)`
   text-decoration: none;
