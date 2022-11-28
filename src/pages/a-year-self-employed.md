@@ -42,7 +42,7 @@ want?
 I've always known that I've wanted to work for myself. When I was young,
 my mom shared a story that entered the canon of my life, of my dad
 coming home from work one day and telling her, "I can't work for other
-people anymore." He went on the found a manufacturing business that he
+people anymore." He went on to found a manufacturing business that he
 operated until he passed away.
 
 I lost my job at the close of a transformative period of my life. I
