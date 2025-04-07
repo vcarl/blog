@@ -73,7 +73,7 @@ can sometimes find homes before they get onto the market, but I didn't
 find any homes that way.
 
 I found an unusual source of information to be absolutely essential:
-[The Department of Buildings records search](http://a810-bisweb.nyc.gov/bisweb/b…).
+[The Department of Buildings records search](https://a810-bisweb.nyc.gov/bisweb/bsqpm01.jsp).
 You can search for any address in the city and pull up a list of permits
 and complaints. Because I was trying hard to keep my budget as low as
 possible, I found a lot of buildings that seemed too good to be true.
