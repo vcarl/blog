@@ -93,6 +93,7 @@ export const query = graphql`
         cover_image
         series
         canonical_url
+        authors
       }
     }
     postsInSeries: allMarkdownRemark(

@@ -33,6 +33,12 @@ import {
   Inserted,
 } from '../basics/Text';
 
+const formatAuthors = authors =>
+  new Intl.ListFormat('en', {
+    style: 'long',
+    type: 'conjunction',
+  }).format(authors && authors.length ? authors : ['Carl Vitullo']);
+
 // remark includes an "AST" of HTML, and I want to be able to use styled-
 // components with it. Thus, HTML tree renderer. Maps tagNames to a
 // styled-component, plus some quirks due to HTML validation.
@@ -44,7 +50,8 @@ export const renderHtml = (ast, metadata) => (
         <Italic>{metadata.description}</Italic>
       </Paragraph>
       <Small>
-        Posted <time datetime={metadata.date}>{metadata.date}</time>
+        By {formatAuthors(metadata.authors)}. Posted{' '}
+        <time datetime={metadata.date}>{metadata.date}</time>
         {metadata.updated && (
           <Italic>
             <TextLink
