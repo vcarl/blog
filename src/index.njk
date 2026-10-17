@@ -1,0 +1,22 @@
+---
+layout: base.njk
+title: Home
+---
+{%- from "snippet.njk" import snippet -%}
+<h1 class="site-title">{{ site.title }}</h1>
+<p class="site-author">Carl Vitullo</p>
+<p>{{ site.description }}</p>
+<p><a href="/about/">new blog who dis?</a> – <a href="/motivation/">but why?</a></p>
+
+{%- for entry in collections.posts | indexEntries %}
+{%- if entry.type == "post" %}
+{%- call snippet(entry.post, 'h2') %}{{ entry.post.data.description }}{% endcall %}
+{%- else %}
+<section class="series-group">
+  <h2>{{ entry.title }} <small>{{ entry.posts.length }} posts</small></h2>
+  {%- for post in entry.posts %}
+  {{ snippet(post) }}
+  {%- endfor %}
+</section>
+{%- endif %}
+{%- endfor %}

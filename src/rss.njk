@@ -1,0 +1,25 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>{{ site.title }}</title>
+    <description>{{ site.description }}</description>
+    <link>{{ site.url }}</link>
+    <atom:link href="{{ site.url }}/rss.xml" rel="self" type="application/rss+xml"/>
+    <generator>Eleventy</generator>
+    <lastBuildDate>{{ "" | rfc822 }}</lastBuildDate>
+    {%- for post in collections.posts %}
+    <item>
+      <title>{{ post.data.title }}</title>
+      <description>{{ post.content | excerpt }}</description>
+      <link>{{ site.url }}{{ post.url }}</link>
+      <guid isPermaLink="false">{{ site.url }}{{ post.url }}</guid>
+      <pubDate>{{ post.date | rfc822 }}</pubDate>
+      <content:encoded>{{ post.content | replace(r/<a class="anchor"[^>]*><\/a>/g, "") }}</content:encoded>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>
