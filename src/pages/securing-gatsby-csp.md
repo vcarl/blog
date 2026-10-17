@@ -35,7 +35,7 @@ order to get it working properly.
 
 It took a lot of trial and error.
 
-![list of 6 pull requests from September 6th to December 18th](/images/csp-trial-and-error.png)
+![list of 6 pull requests from September 6th to December 18th](images/csp-trial-and-error.png)
 
 ## Limits from Gatsby and MDX
 

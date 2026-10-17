@@ -1,0 +1,9 @@
+{
+  "name": "Answers to questions nobody asked me",
+  "short_name": "~vcarl",
+  "start_url": "/",
+  "background_color": "#93261F",
+  "theme_color": "#93261F",
+  "display": "minimal-ui",
+  "icons": [{ "src": "/images/favicon.png", "sizes": "128x128", "type": "image/png" }]
+}

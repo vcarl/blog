@@ -1,0 +1,50 @@
+{%- set metaDescription = description or site.description -%}
+{%- set keywords = tags | tagList -%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }} | {{ site.title }}</title>
+    <meta name="description" content="{{ metaDescription }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ metaDescription }}">
+    <meta property="og:type" content="website">
+    {%- if cover_image %}
+    <meta property="og:image" content="{{ cover_image }}">
+    {%- endif %}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="{{ site.author }}">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ metaDescription }}">
+    {%- if keywords.length %}
+    <meta name="keywords" content="{{ keywords | join(', ') }}">
+    {%- endif %}
+    {%- if canonical_url %}
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- endif %}
+    <meta name="theme-color" content="#93261F">
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/rss.xml">
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap"><a href="/">~vcarl</a></div>
+    </header>
+    <main class="wrap">
+      {{ content | safe }}
+    </main>
+    <footer class="site-footer wrap">
+      <p class="social">
+        <a href="https://github.com/vcarl"><img src="/images/github.svg" alt="GitHub" width="24" height="24"></a>
+        <a href="https://twitter.com/vcarl_"><img src="/images/twitter.svg" alt="Twitter" width="24" height="24"></a>
+        <a href="https://www.linkedin.com/in/carl-vitullo-a7488728/"><img src="/images/linkedin.svg" alt="LinkedIn" width="24" height="24"></a>
+        <a href="/rss.xml"><img src="/images/rss.svg" alt="RSS" width="24" height="24"></a>
+      </p>
+      <p><a href="https://github.com/vcarl/blog">View source</a></p>
+      <p>© {% year %}, Built with <a href="https://www.11ty.dev">Eleventy</a></p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+---
+layout: base.njk
+---
+{%- from "snippet.njk" import snippet -%}
+{%- set path = page.inputPath | replace("./src/", "") -%}
+{%- if cover_image %}
+<img class="cover" src="{{ cover_image }}" alt="">
+{%- endif %}
+<article class="post">
+  <header>
+    <h1>{{ title }}</h1>
+    {%- if description %}
+    <p class="lede"><em>{{ description }}</em></p>
+    {%- endif %}
+    <p class="byline"><small>
+      By {{ authors | authors }}. Posted <time datetime="{{ page.date | ymd }}">{{ page.date | ymd }}</time>
+      {%- if updated %}<em><a href="https://github.com/vcarl/blog/blame/master/src/{{ path }}">, last updated {{ updated | ymd }}</a></em>{% endif -%}
+      , {{ content | timeToRead }} minute read.</small>
+      {%- if series %} <small>Part of a series: {{ series }}</small>{% endif %}
+    </p>
+  </header>
+  {{ content | safe }}
+</article>
+
+<aside class="post-meta">
+  <p><a href="https://github.com/vcarl/blog/edit/master/src/{{ path }}">Edit on GitHub</a></p>
+
+  {%- if series %}
+  {%- set seriesPosts = collections.posts | inSeries(series) %}
+  <nav class="series" aria-label="Series">
+    <h2>{{ series }}</h2>
+    <h3><small>Other posts in this series</small></h3>
+    <ul>
+      {%- for p in seriesPosts %}
+      <li>{% if p.url == page.url %}{{ p.data.title }} (this one){% else %}<a href="{{ p.url }}">{{ p.data.title }}</a>{% endif %}</li>
+      {%- endfor %}
+    </ul>
+    {%- set idx = seriesPosts | indexOfUrl(page.url) %}
+    <p class="series-nav">
+      <span>{% if idx > 0 %}<a href="{{ seriesPosts[idx - 1].url }}" rel="prev">◀ Previous</a>{% endif %}</span>
+      <span>{% if seriesPosts[idx + 1] %}<a href="{{ seriesPosts[idx + 1].url }}" rel="next">Next ▶</a>{% endif %}</span>
+    </p>
+  </nav>
+  {%- endif %}
+
+  {%- set related = collections.posts | relatedPosts(page.url, series, tags) %}
+  {%- if related.length %}
+  <section class="related">
+    <h2>Related Posts</h2>
+    {%- for r in related %}
+    {%- call snippet(r.post) %}{{ r.post.data.description }} <small>{{ r.tag }}</small>{% endcall %}
+    {%- endfor %}
+  </section>
+  {%- endif %}
+</aside>
+
+{%- if "twitter-tweet" in content %}
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{%- endif %}
