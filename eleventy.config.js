@@ -40,10 +40,29 @@ export default function (eleventyConfig) {
     md.set({ linkify: true });
     md.linkify.set({ fuzzyLink: false, fuzzyEmail: false });
 
+    // Posts reference images as "images/foo.jpg" (relative to src/pages, so
+    // editors and GitHub preview them); on the site they live at /images/.
+    const siteImagePath = (url) => url.replace(/^(\.\/)?images\//, '/images/');
+    const defaultImage = md.renderer.rules.image;
+    md.renderer.rules.image = (tokens, idx, ...rest) => {
+      const token = tokens[idx];
+      token.attrSet('src', siteImagePath(token.attrGet('src')));
+      token.attrSet('loading', 'lazy');
+      token.attrSet('decoding', 'async');
+      return defaultImage(tokens, idx, ...rest);
+    };
+    md.renderer.rules.link_open = (tokens, idx, options, env, self) => {
+      const token = tokens[idx];
+      token.attrSet('href', siteImagePath(token.attrGet('href')));
+      return self.renderToken(tokens, idx, options);
+    };
+
     const anchored = (tokens, idx, options, env, self) => {
       const token = tokens[idx];
       if (token.hidden) return '';
       const id = toId(inlineText(tokens[idx + 1].children));
+      // Image-only paragraphs have no text to make an id from.
+      if (!id) return self.renderToken(tokens, idx, options);
       token.attrSet('id', id);
       return (
         self.renderToken(tokens, idx, options) +
@@ -83,7 +102,7 @@ export default function (eleventyConfig) {
     ),
   );
 
-  eleventyConfig.addPassthroughCopy({ static: '/' });
+  eleventyConfig.addPassthroughCopy({ 'src/pages/images': 'images' });
   eleventyConfig.addPassthroughCopy({ 'src/images': 'images' });
   eleventyConfig.addPassthroughCopy('src/fonts');
   eleventyConfig.addPassthroughCopy('src/styles.css');

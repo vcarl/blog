@@ -137,7 +137,7 @@ Wayfair's leadership might receive it.
 
 ## Paragraph 1
 
-![Paragraph 1](/images/wayfair-1.jpg)
+![Paragraph 1](images/wayfair-1.jpg)
 
 The opening paragraph is straight and to the point without using
 (excessively) inflammatory language. It clearly communicates the
@@ -168,7 +168,7 @@ so it distracts from the main request.
 
 ## Paragraph 2
 
-![Paragraph 2](/images/wayfair-2.jpg)
+![Paragraph 2](images/wayfair-2.jpg)
 
 Emphasizing that this isn't the first occurrence ups the ante
 significantly. The footnote explains that BCFS's first purchase of
@@ -185,7 +185,7 @@ children at risk.
 
 ## Paragraph 3
 
-![Paragraph 3](/images/wayfair-3.jpg)
+![Paragraph 3](images/wayfair-3.jpg)
 
 Solidly bringing it back to Wayfair's own ideals, a VP of B2B sales is
 quoted directly. Using an executive's own words in support of their
@@ -195,7 +195,7 @@ complaints against the business' aspirations.
 
 ## Paragraph 4
 
-![Paragraph 4](/images/wayfair-4.jpg)
+![Paragraph 4](images/wayfair-4.jpg)
 
 Finally, the asks. They're limited in scope and accomplishable. It's a
 combination of rectifying a wrong and making an organizational change to
@@ -215,7 +215,7 @@ yet:
 
 [Management's response](https://twitter.com/FizFashizzle/status/1143530739541139457),
 delivered the next day, is a flat no.
-([Mirror](/images/wayfair-response.jpg), in case the tweet is removed)
+([Mirror](images/wayfair-response.jpg), in case the tweet is removed)
 
 Thus the walkout. It offers a good reminder: It's not enough to complain
 if your company is doing something that you and your colleagues feel is
